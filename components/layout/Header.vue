@@ -4,7 +4,7 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between py-3 px-6">
       <div class="flex items-center gap-3">
         <span class="flex items-center gap-2">
-          <img src="/logo.png" alt="Logo Pizzería Pedestales" class="h-12 w-auto inline-block align-middle">
+          <NuxtImg src="/logo.png" alt="Logo Pizzería Pedestales" class="h-12 w-auto inline-block align-middle" />
           <span>
             <span class="block text-xl font-extrabold text-red-500 leading-tight">Pizzería Pedestales</span>
           </span>
@@ -34,5 +34,5 @@
 </template>
 
 <script setup lang="ts">
-// No necesitas nada aquí de momento
+import { NuxtImg } from '#components';
 </script>

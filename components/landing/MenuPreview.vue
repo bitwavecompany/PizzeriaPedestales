@@ -1,7 +1,13 @@
 <template>
-  <section id="menu" class="menu-preview">
-    <h2>Menú destacado</h2>
-    <div class="menu-list">
+  <section id="menu" class="py-12 px-4 text-center bg-gray-50">
+    <div class="max-w-3xl mx-auto mb-10">
+      <h2 class="text-5xl font-extrabold text-gray-800 mb-4">Nuestras Pizzas</h2>
+      <p class="text-lg text-gray-600 leading-relaxed">
+        Cada pizza es elaborada con ingredientes frescos y masa artesanal,<br>
+        siguiendo recetas tradicionales italianas
+      </p>
+    </div>
+    <div class="flex justify-center gap-4 flex-wrap">
       <Card title="Pizza Margarita" />
       <Card title="Pizza Pepperoni" />
       <Card title="Pizza Hawaiana" />
@@ -14,13 +20,5 @@ import Card from '@/components/ui/Card.vue'
 </script>
 
 <style scoped>
-.menu-preview {
-  padding: 2rem;
-  text-align: center;
-}
-.menu-list {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
+
 </style>

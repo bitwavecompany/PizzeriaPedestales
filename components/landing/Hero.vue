@@ -7,10 +7,6 @@
   >
     <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
       <div class="text-center text-white max-w-2xl w-full px-4 z-10">
-        <div class="inline-flex items-center bg-red-600/90 text-white py-2 px-4 rounded-full text-sm mb-8 gap-2">
-          <span class="text-base">🚚</span>
-          <span>Repartir Domicilio</span>
-        </div>
         <h1 class="font-bold text-5xl md:text-4xl sm:text-2xl mb-6 leading-tight drop-shadow-lg">
           La Mejor Pizza de la
           <span class="text-red-500 drop-shadow-xl"> Ciudad</span>
@@ -21,15 +17,15 @@
         </p>
         <div class="flex justify-center gap-12 mb-12 flex-wrap">
           <div class="flex items-center gap-2 text-base drop-shadow">
-            <span class="text-xl">⭐</span>
+            <Icon icon="ic:round-star" class="text-yellow-400 text-xl" />
             <span>4.8/5 Estrellas</span>
           </div>
           <div class="flex items-center gap-2 text-base drop-shadow">
-            <span class="text-xl">🕐</span>
+            <Icon icon="ic:round-access-time" class="text-green-300 text-xl" />
             <span>Entrega en 30 min</span>
           </div>
           <div class="flex items-center gap-2 text-base drop-shadow">
-            <span class="text-xl">🏆</span>
+            <Icon icon="ic:round-emoji-events" class="text-yellow-300 text-xl" />
             <span>+70 años de experiencia</span>
           </div>
         </div>
@@ -44,6 +40,7 @@
 
 <script setup lang="ts">
 import Button from '@/components/ui/Button.vue'
+import { Icon } from '@iconify/vue';
 </script>
 
 <style scoped>
