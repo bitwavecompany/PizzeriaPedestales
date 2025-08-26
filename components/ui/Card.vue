@@ -2,7 +2,7 @@
 <template>
   <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-[320px] flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl cursor-pointer">
     <div class="relative">
-      <div class="w-full h-[200px] bg-gray-100 flex items-center justify-center p-4">
+      <div class="w-full h-[220px] bg-gray-50 flex items-center justify-center p-4">
         <NuxtImg
           v-if="img"
           :src="img"

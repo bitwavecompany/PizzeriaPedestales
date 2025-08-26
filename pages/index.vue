@@ -2,6 +2,7 @@
 <template>
   <div>
     <Hero />
+    <Carrusel/>
     <MenuPreview />
     <Contact />
   </div>
@@ -11,4 +12,5 @@
 import Hero from '@/components/landing/Hero.vue'
 import MenuPreview from '@/components/landing/MenuPreview.vue'
 import Contact from '@/components/landing/Contact.vue'
+import Carrusel from '@/components/landing/Carrusel.vue';
 </script>

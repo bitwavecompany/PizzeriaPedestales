@@ -39,7 +39,14 @@
         </ul>
       </nav>
       <div>
-  <button onclick="location.href='#pedido'" type="button" class="bg-red-500 hover:bg-red-600 text-white font-medium rounded-full px-7 py-2 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200">Hacer Pedido</button>
+        <a 
+          :href="whatsappUrl" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="bg-red-500 hover:bg-red-600 text-white font-medium rounded-full px-7 py-2 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 inline-block"
+        >
+          Hacer Pedido
+        </a>
       </div>
     </div>
   </header>
@@ -48,4 +55,13 @@
 <script setup lang="ts">
 import { NuxtImg } from '#components';
 import { Icon } from '@iconify/vue';
+
+// Configuración para WhatsApp
+const phoneNumber = "593991961946"
+const message = "¡Hola! Me gustaría hacer un pedido en Pizzería Pedestales. ¿Podrían ayudarme?"
+
+const whatsappUrl = computed(() => {
+  const encodedMessage = encodeURIComponent(message)
+  return `https://wa.me/${phoneNumber}?text=${encodedMessage}`
+})
 </script>

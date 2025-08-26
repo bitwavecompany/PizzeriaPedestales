@@ -19,15 +19,15 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex flex-col gap-3 justify-center">
               <span class="inline-flex items-center bg-gray-200 rounded-full px-3 py-4 text-base font-medium text-gray-700 gap-2">
-                <Icon icon="bxs:map" class="text-red-500" width="18" height="18" />
+                <Icon icon="bxs:map" class="text-red-500" width="36" height="36" />
                 <span class="font-semibold">María Angélica Idrobo y Rosa, Catucuamba - Quito, S52-555</span>
               </span>
               <span class="inline-flex items-center bg-gray-200 rounded-full px-3 py-4 text-base font-medium text-gray-700 gap-2">
-                <Icon icon="line-md:phone-twotone" class="text-red-500" width="18" height="18" />
-                <span class="font-semibold">099-374-0527</span>
+                <Icon icon="logos:whatsapp-icon" class="text-red-500" width="24" height="24" />
+                <span class="font-semibold">0993740527</span>
               </span>
               <span class="inline-flex items-center bg-gray-200 rounded-full px-3 py-4 text-base font-medium text-gray-700 gap-2">
-                <Icon icon="ic:baseline-email" class="text-red-500" width="18" height="18" />
+                <Icon icon="ic:baseline-email" class="text-red-500" width="24" height="24" />
                 <span class="font-semibold">pizzeriapedestales@gmail.com</span>
               </span>
             </div>
