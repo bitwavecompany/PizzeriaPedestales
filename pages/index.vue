@@ -1,8 +1,10 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div>
+  <div class="overflow-x-hidden max-w-full">
     <Hero />
-    <Carrusel/>
+    <div class="px-0 py-0 sm:py-0 overflow-x-hidden">
+      <Carrusel/>
+    </div>
     <MenuPreview />
     <Contact />
   </div>

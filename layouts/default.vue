@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div>
+  <div class="overflow-x-hidden max-w-full">
     <Header />
-    <main class="min-h-screen">
+    <main class="min-h-screen overflow-x-hidden">
       <slot />
     </main>
     <Footer />

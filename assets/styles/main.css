@@ -1,8 +1,26 @@
+/* Prevenir scroll horizontal */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #fafafa;
 }
+
 h1, h2, h3 {
   margin: 0.5rem 0;
+}
+
+/* Asegurar que todos los elementos respeten el ancho de pantalla */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevenir desbordamiento en elementos contenedores */
+.container, section, main {
+  max-width: 100%;
+  overflow-x: hidden;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-6 right-6 z-50">
+  <div class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
     <a
       :href="whatsappUrl"
       target="_blank"
@@ -9,8 +9,8 @@
         flex
         items-center
         justify-center
-        w-14
-        h-14
+        w-12 h-12
+        sm:w-14 sm:h-14
         bg-green-500
         hover:bg-green-600
         text-white
@@ -28,7 +28,7 @@
     >
       <!-- Icono de WhatsApp -->
       <svg
-        class="w-8 h-8"
+        class="w-6 h-6 sm:w-8 sm:h-8"
         viewBox="0 0 24 24"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
@@ -42,22 +42,23 @@
       <span
         class="
           absolute
-          right-16
+          right-14 sm:right-16
           top-1/2
           transform
           -translate-y-1/2
           bg-gray-800
           text-white
-          px-3
-          py-2
+          px-2 sm:px-3
+          py-1.5 sm:py-2
           rounded-lg
-          text-sm
+          text-xs sm:text-sm
           whitespace-nowrap
           opacity-0
           group-hover:opacity-100
           transition-opacity
           duration-300
           pointer-events-none
+          hidden sm:block
         "
       >
         {{ tooltipText }}
@@ -72,7 +73,7 @@
             border-transparent
             border-l-gray-800
           "
-  />
+        />
       </span>
     </a>
   </div>

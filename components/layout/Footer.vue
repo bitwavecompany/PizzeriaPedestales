@@ -1,7 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <footer class="footer">
-    <p>© 2025 Pizzería Pedestales - Todos los derechos reservados.</p>
+  <footer class="footer overflow-x-hidden">
+    <div class="max-w-7xl mx-auto px-4 py-4 sm:py-6 overflow-x-hidden">
+      <p class="text-sm sm:text-base text-center">© 2025 Pizzería Pedestales - Todos los derechos reservados.</p>
+    </div>
   </footer>
 </template>
 
@@ -9,8 +11,6 @@
 
 <style scoped>
 .footer {
-  text-align: center;
-  padding: 1rem;
   background: #333;
   color: white;
 }
