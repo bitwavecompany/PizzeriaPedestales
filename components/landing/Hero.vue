@@ -7,9 +7,8 @@
   >
     <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
       <div class="text-center text-white max-w-2xl w-full px-4 z-10">
-        <h1 class="font-bold text-5xl md:text-4xl sm:text-2xl mb-6 leading-tight drop-shadow-lg">
-          La Mejor Pizza de la
-          <span class="text-red-500 drop-shadow-xl"> Ciudad</span>
+        <h1 class="font-bold text-6xl md:text-4xl sm:text-2xl mb-6 leading-tight drop-shadow-lg">
+          La Pizza que Siempre Querrás Repetir
         </h1>
         <div class="flex justify-center gap-12 mb-12 flex-wrap">
           <div class="flex items-center gap-2 text-2xl md:text-xl drop-shadow">
@@ -22,11 +21,13 @@
           </div>
         </div>
         <div class="flex gap-4 justify-center flex-wrap">
-          <Button text="Descargar Menú">
-            <template #icon>
-              <Icon icon="ic:baseline-download" width="24" height="24" />
-            </template>
-          </Button>
+          <a href="/documents/MenúPizzeríaPedestales.pdf" download class="inline-block">
+            <Button text="Descargar Menú">
+              <template #icon>
+                <Icon icon="ic:baseline-download" width="24" height="24" />
+              </template>
+            </Button>
+          </a>
         </div>
       </div>
     </div>

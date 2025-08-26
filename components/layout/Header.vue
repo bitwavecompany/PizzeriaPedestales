@@ -30,12 +30,12 @@
               Contacto
             </button>
           </li>
-          <li>
+          <!-- <li>
             <button onclick="location.href='#nosotros'" type="button" class="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-red-600 transition-colors px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-200">
               <Icon icon="ion:people-sharp" width="20" height="20" class="text-red-500" />
               Nosotros
             </button>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <div>

@@ -1,9 +1,9 @@
 <template>
-  <section id="menu" class="py-12 px-4 text-center bg-gradient-to-t from-green-500 to-emerald-800">
+  <section id="menu" class="pb-12 pt-20 px-4 text-center bg-gradient-to-t from-green-500 to-emerald-800">
     <div class="max-w-3xl mx-auto mb-10">
       <h2 class="text-5xl font-extrabold text-white mb-4">Nuestras Pizzas</h2>
     </div>
-    <div class="flex justify-center gap-4 flex-wrap">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
 
   <Card 
     title="Pizza Hawaiana" 
