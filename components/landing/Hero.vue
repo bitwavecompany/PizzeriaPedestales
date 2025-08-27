@@ -60,7 +60,7 @@ onMounted(() => {
 
 const trackMenuDownload = () => {
   console.log('Intentando enviar evento de descarga de menú...') // Debug
-  trackEvent('file_download', {
+  trackEvent('menu_download', {
     event_category: 'engagement',
     event_label: 'Menu PDF',
     file_name: 'MenúPizzeríaPedestales.pdf',
