@@ -7,8 +7,15 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/image',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'nuxt-gtag' // 👈 agregado aquí
   ],
+  gtag: {
+    id: 'G-EFBRLTYSV3', // 👈 tu ID de medición
+    config: {
+      anonymize_ip: true // opcional: oculta la IP de los usuarios
+    }
+  },
   app: {
     head: {
       title: 'Pizzería Pedestales',
@@ -21,7 +28,8 @@ export default defineNuxtConfig({
         },
         {
           'http-equiv': 'Permissions-Policy',
-          content: 'accelerometer=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()'
+          content:
+            'accelerometer=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()'
         }
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -38,10 +46,10 @@ export default defineNuxtConfig({
       md: 768,
       lg: 1024,
       xl: 1280,
-      xxl: 1536,
+      xxl: 1536
     }
   },
   vite: {
     plugins: [tsconfigPaths()]
-  },
+  }
 })
