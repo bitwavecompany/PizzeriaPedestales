@@ -25,7 +25,7 @@
     </div>
     <div class="px-3 sm:px-4 py-3 flex-1 flex flex-col">
       <div class="flex justify-between items-center mb-2">
-        <h3 class="font-bold text-base sm:text-lg text-gray-800 truncate">{{ title }}</h3>
+    <h3 class="font-bold text-lg sm:text-xl text-gray-800 truncate text-center w-full my-0">{{ title }}</h3>
       </div>
       <p class="text-gray-500 text-xs sm:text-sm mb-3 leading-relaxed overflow-hidden description-text">{{ description }}</p>
       
