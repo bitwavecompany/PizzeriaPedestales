@@ -136,7 +136,7 @@ import { Icon } from '@iconify/vue';
 const isMenuOpen = ref(false)
 
 // Configuración para WhatsApp
-const phoneNumber = "593991961946"
+const phoneNumber = "593993749527"
 const message = "¡Hola! Me gustaría hacer un pedido en Pizzería Pedestales. ¿Podrían ayudarme?"
 
 const whatsappUrl = computed(() => {
