@@ -9,7 +9,7 @@
     
     <!-- Botón flotante de WhatsApp -->
     <WhatsAppButton 
-      phone-number="593993749527"
+      phone-number="593993740527"
       message="¡Hola! Me gustaría hacer un pedido en Pizzería Pedestales. ¿Podrían ayudarme?"
       tooltip-text="¡Escríbenos por WhatsApp!"
     />
