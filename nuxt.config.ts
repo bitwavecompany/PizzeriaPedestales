@@ -43,5 +43,8 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [tsconfigPaths()]
+  },
+  nitro: {
+    preset: 'vercel'
   }
 })
