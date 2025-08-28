@@ -40,7 +40,6 @@
               target="_blank" 
               rel="noopener noreferrer"
               class="bg-red-500 hover:bg-red-600 text-white font-medium rounded-full px-7 py-2 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 inline-block"
-              @click="trackWhatsAppOrder"
             >
             Hacer Pedido
           </a>
@@ -115,7 +114,7 @@
                 target="_blank" 
                 rel="noopener noreferrer"
                 class="w-full bg-red-500 hover:bg-red-600 text-white font-medium rounded-full px-6 py-3 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 flex items-center justify-center gap-2"
-                @click="isMenuOpen = false; trackWhatsAppOrder()"
+                @click="isMenuOpen = false"
               >
                 <Icon icon="logos:whatsapp-icon" width="20" height="20" />
                 Hacer Pedido
@@ -132,27 +131,9 @@
 import { ref, computed } from 'vue'
 import { NuxtImg } from '#components';
 import { Icon } from '@iconify/vue';
-import { useGtag } from '@/composables/useGtag'
 
 // Estado para el menú móvil
 const isMenuOpen = ref(false)
-
-// Configuración de Google Analytics
-const { trackEvent } = useGtag()
-
-// Función para trackear el evento de pedido via WhatsApp
-const trackWhatsAppOrder = () => {
-  setTimeout(() => {
-    console.log('🎯 Clic en botón pedido WhatsApp...') // Debug
-    trackEvent('whatsapp_order', {
-      event_category: 'engagement',
-      event_label: 'WhatsApp Order Button',
-      link_url: whatsappUrl.value,
-      contact_method: 'whatsapp',
-      value: 1
-    })
-  }, 100)
-}
 
 // Configuración para WhatsApp
 const phoneNumber = "593993740527"

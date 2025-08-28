@@ -25,7 +25,6 @@
         hover:animate-none
       "
       :title="tooltipText"
-      @click="trackFloatedWhatsAppOrder"
     >
       <!-- Icono de WhatsApp -->
       <svg
@@ -81,8 +80,6 @@
 </template>
 
 <script setup lang="ts">
-import { useGtag } from '@/composables/useGtag'
-
 interface Props {
   phoneNumber: string
   message?: string
@@ -93,24 +90,6 @@ const props = withDefaults(defineProps<Props>(), {
   message: '¡Hola! Me gustaría hacer un pedido en Pizzería Pedestales',
   tooltipText: 'Chatea con nosotros en WhatsApp'
 })
-
-// Configuración de Google Analytics
-const { trackEvent } = useGtag()
-
-// Función para trackear el evento del botón flotante de WhatsApp
-const trackFloatedWhatsAppOrder = () => {
-  setTimeout(() => {
-    console.log('🎯 Clic en botón flotante WhatsApp...') // Debug
-    trackEvent('floated_whatsapp_order', {
-      event_category: 'engagement',
-      event_label: 'Floating WhatsApp Button',
-      link_url: whatsappUrl.value,
-      contact_method: 'whatsapp',
-      button_type: 'floating',
-      value: 1
-    })
-  }, 100)
-}
 
 const whatsappUrl = computed(() => {
   const encodedMessage = encodeURIComponent(props.message)

@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="flex justify-center items-center">
-          <a href="/documents/MenúPizzeríaPedestales.pdf" download class="inline-block w-full sm:w-auto max-w-xs" @click="trackMenuDownload">
+          <a href="/documents/MenúPizzeríaPedestales.pdf" download class="inline-block w-full sm:w-auto max-w-xs">
             <Button text="Descargar Menú" class="w-full sm:w-auto justify-center">
               <template #icon>
                 <Icon icon="ic:baseline-download" width="24" height="24" />
@@ -37,13 +37,10 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue'
 import Button from '@/components/ui/Button.vue'
-import { useGtag } from '@/composables/useGtag'
 import { Icon } from '@iconify/vue';
 
 // Estado para detectar si estamos en el cliente
 const isClient = ref(false)
-
-const { trackEvent } = useGtag()
 
 // Detectar pantallas grandes para ajustar el tamaño de los iconos
 const isLargeScreen = computed(() => {
@@ -57,21 +54,6 @@ const isLargeScreen = computed(() => {
 onMounted(() => {
   isClient.value = true
 })
-
-const trackMenuDownload = () => {
-  // Pequeño retraso para asegurar que la página esté completamente cargada
-  setTimeout(() => {
-    console.log('🎯 Clic en botón de descarga de menú...') // Debug
-    trackEvent('menu_download', {
-      event_category: 'engagement',
-      event_label: 'Menu PDF',
-      file_name: 'MenúPizzeríaPedestales.pdf',
-      file_extension: 'pdf',
-      link_url: '/documents/MenúPizzeríaPedestales.pdf',
-      value: 1
-    })
-  }, 100)
-}
 
 
 </script>
