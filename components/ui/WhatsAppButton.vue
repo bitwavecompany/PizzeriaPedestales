@@ -98,14 +98,8 @@ const props = withDefaults(defineProps<Props>(), {
 const { trackEvent } = useGtag()
 
 // Función para trackear el evento del botón flotante de WhatsApp
-const trackFloatedWhatsAppOrder = (event: Event) => {
-  // Prevenir comportamiento no deseado
-  if (typeof window === 'undefined') {
-    event.preventDefault()
-    return
-  }
-  
-  console.log('Intentando enviar evento de botón flotante WhatsApp...') // Debug
+const trackFloatedWhatsAppOrder = () => {
+  console.log('🎯 Clic en botón flotante WhatsApp...') // Debug
   trackEvent('floated_whatsapp_order', {
     event_category: 'engagement',
     event_label: 'Floating WhatsApp Button',

@@ -1,6 +1,6 @@
 // composables/useGtag.ts
 
-// Set global para almacenar eventos recientes y evitar duplicados
+// Set global para almacenar eventos recientes y evitar duplicados inmediatos
 const globalRecentEvents = new Set<string>()
 
 export const useGtag = () => {
@@ -16,24 +16,29 @@ export const useGtag = () => {
       return
     }
 
-    // Crear una clave única para evitar duplicados
-    const duplicateKey = `${eventName}_${eventParams.event_label || ''}`
+    // Crear una clave única para evitar duplicados inmediatos (misma interacción)
+    const duplicateKey = `${eventName}_${Date.now()}`
 
-    // Verificar si el mismo evento se ha enviado muy recientemente (últimos 3 segundos)
-    if (globalRecentEvents.has(duplicateKey)) {
-      console.log('🚫 Evento duplicado detectado, ignorando:', eventName)
+    // Verificar si el mismo evento se ha enviado muy recientemente (últimos 500ms)
+    const recentSimilarEvent = Array.from(globalRecentEvents).find(key => 
+      key.startsWith(eventName) && 
+      (Date.now() - parseInt(key.split('_').pop() || '0')) < 500
+    )
+
+    if (recentSimilarEvent) {
+      console.log('🚫 Evento duplicado detectado (muy reciente), ignorando:', eventName)
       return
     }
 
     // Agregar a la lista de eventos recientes
     globalRecentEvents.add(duplicateKey)
     
-    // Limpiar la entrada después de 3 segundos
+    // Limpiar entradas viejas después de 2 segundos
     setTimeout(() => {
       globalRecentEvents.delete(duplicateKey)
-    }, 3000)
+    }, 2000)
 
-    // Función para enviar el evento una sola vez
+    // Función para enviar el evento
     const sendEvent = (): boolean => {
       try {
         // Verificar si gtag está disponible globalmente
@@ -60,7 +65,7 @@ export const useGtag = () => {
       }
     }
 
-    // Intentar enviar inmediatamente - solo una vez
+    // Enviar el evento
     const success = sendEvent()
     
     if (!success) {

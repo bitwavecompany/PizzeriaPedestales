@@ -115,7 +115,7 @@
                 target="_blank" 
                 rel="noopener noreferrer"
                 class="w-full bg-red-500 hover:bg-red-600 text-white font-medium rounded-full px-6 py-3 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 flex items-center justify-center gap-2"
-                @click="isMenuOpen = false; trackWhatsAppOrder"
+                @click="isMenuOpen = false; trackWhatsAppOrder()"
               >
                 <Icon icon="logos:whatsapp-icon" width="20" height="20" />
                 Hacer Pedido
@@ -141,14 +141,8 @@ const isMenuOpen = ref(false)
 const { trackEvent } = useGtag()
 
 // Función para trackear el evento de pedido via WhatsApp
-const trackWhatsAppOrder = (event: Event) => {
-  // Prevenir comportamiento no deseado durante hidratación
-  if (typeof window === 'undefined') {
-    event.preventDefault()
-    return
-  }
-  
-  console.log('Intentando enviar evento de pedido via WhatsApp...') // Debug
+const trackWhatsAppOrder = () => {
+  console.log('🎯 Clic en botón pedido WhatsApp...') // Debug
   trackEvent('whatsapp_order', {
     event_category: 'engagement',
     event_label: 'WhatsApp Order Button',
