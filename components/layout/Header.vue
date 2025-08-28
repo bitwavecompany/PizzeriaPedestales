@@ -36,6 +36,11 @@
         </nav>
         <div class="flex-shrink-0">
             <a 
+              id="pedido_desktop"
+              data-gtm="pedido_desktop"
+              data-element="pedido-desktop"
+              data-action="click"
+              data-category="pedido"
               :href="whatsappUrl" 
               target="_blank" 
               rel="noopener noreferrer"
@@ -110,6 +115,11 @@
             </ul>
             <div class="mt-4 pb-2">
               <a 
+                id="pedido_movil"
+                data-gtm="pedido_movil"
+                data-element="pedido-movil"
+                data-action="click"
+                data-category="pedido"
                 :href="whatsappUrl" 
                 target="_blank" 
                 rel="noopener noreferrer"
