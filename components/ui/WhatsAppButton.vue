@@ -1,10 +1,14 @@
 <template>
   <div class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
     <a
+      id="whatsapp-float-button"
       :href="whatsappUrl"
       target="_blank"
       rel="noopener noreferrer"
       data-gtm="whatsapp-float"
+      data-element="whatsapp-button"
+      data-action="click"
+      data-category="contact"
       class="
         group
         flex
