@@ -2,32 +2,36 @@
 export default defineNuxtPlugin(() => {
   // Solo ejecutar en el cliente
   if (typeof window !== 'undefined') {
-    // Verificar que Google Analytics esté cargado
-    let attempts = 0
-    const maxAttempts = 10
+    // Verificar inmediatamente si gtag está disponible
+    console.log('🔍 Verificando estado de Google Analytics...')
     
-    const checkGtag = () => {
-      attempts++
+    const checkGtagStatus = () => {
+      console.log('--- Estado de Google Analytics ---')
+      console.log('window.gtag:', typeof window.gtag)
+      console.log('window.dataLayer:', window.dataLayer ? 'disponible' : 'no disponible')
+      console.log('dataLayer length:', window.dataLayer?.length || 0)
       
-      if (typeof window.gtag === 'function') {
-        console.log('✅ Google Analytics (gtag) está cargado y listo')
-        return
-      }
-      
-      if (window.dataLayer && Array.isArray(window.dataLayer)) {
-        console.log('✅ Google Analytics (dataLayer) está disponible')
-        return
-      }
-      
-      if (attempts < maxAttempts) {
-        console.log(`⏳ Esperando Google Analytics... intento ${attempts}/${maxAttempts}`)
-        setTimeout(checkGtag, 1000)
-      } else {
-        console.warn('⚠️ Google Analytics no se cargó después de varios intentos')
+      if (window.dataLayer) {
+        console.log('Últimas entradas en dataLayer:', window.dataLayer.slice(-3))
       }
     }
     
-    // Verificar inmediatamente y luego cada segundo si es necesario
-    checkGtag()
+    // Verificar inmediatamente
+    checkGtagStatus()
+    
+    // Verificar después de 2 segundos para dar tiempo a que cargue
+    setTimeout(() => {
+      console.log('🔍 Verificando nuevamente después de 2 segundos...')
+      checkGtagStatus()
+    }, 2000)
+    
+    // Interceptar llamadas a gtag para debugging
+    if (typeof window.gtag === 'function') {
+      const originalGtag = window.gtag
+      window.gtag = function(...args) {
+        console.log('📊 Llamada interceptada a gtag:', args)
+        return originalGtag.apply(this, args)
+      }
+    }
   }
 })

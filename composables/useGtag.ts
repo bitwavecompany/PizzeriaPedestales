@@ -1,8 +1,5 @@
 // composables/useGtag.ts
 
-// Set global para almacenar eventos recientes y evitar duplicados inmediatos
-const globalRecentEvents = new Set<string>()
-
 export const useGtag = () => {
   type GtagEventParams = Record<string, string | number | boolean | undefined>
 
@@ -10,67 +7,40 @@ export const useGtag = () => {
     eventName: string,
     eventParams: GtagEventParams = {}
   ) => {
-    // Verificar que estamos en el cliente y que el evento no es vacío
-    if (typeof window === 'undefined' || !eventName) {
-      console.log('Evento ignorado - no en cliente o nombre vacío:', eventName)
+    // Verificar que estamos en el cliente
+    if (typeof window === 'undefined') {
+      console.log('❌ No estamos en el cliente, ignorando evento:', eventName)
       return
     }
 
-    // Crear una clave única para evitar duplicados inmediatos (misma interacción)
-    const duplicateKey = `${eventName}_${Date.now()}`
+    console.log('🎯 Intentando enviar evento:', eventName, eventParams)
 
-    // Verificar si el mismo evento se ha enviado muy recientemente (últimos 500ms)
-    const recentSimilarEvent = Array.from(globalRecentEvents).find(key => 
-      key.startsWith(eventName) && 
-      (Date.now() - parseInt(key.split('_').pop() || '0')) < 500
-    )
-
-    if (recentSimilarEvent) {
-      console.log('🚫 Evento duplicado detectado (muy reciente), ignorando:', eventName)
-      return
-    }
-
-    // Agregar a la lista de eventos recientes
-    globalRecentEvents.add(duplicateKey)
-    
-    // Limpiar entradas viejas después de 2 segundos
-    setTimeout(() => {
-      globalRecentEvents.delete(duplicateKey)
-    }, 2000)
-
-    // Función para enviar el evento
-    const sendEvent = (): boolean => {
+    // Método 1: Usar gtag directamente
+    if (typeof window.gtag === 'function') {
       try {
-        // Verificar si gtag está disponible globalmente
-        if (typeof window.gtag === 'function') {
-          console.log('✅ Enviando evento via gtag:', eventName, eventParams)
-          window.gtag('event', eventName, eventParams)
-          return true
-        }
-        
-        // Verificar si dataLayer está disponible como fallback
-        if (window.dataLayer && Array.isArray(window.dataLayer)) {
-          console.log('✅ Enviando evento via dataLayer:', eventName, eventParams)
-          window.dataLayer.push({
-            event: eventName,
-            ...eventParams
-          })
-          return true
-        }
-        
-        return false
+        window.gtag('event', eventName, eventParams)
+        console.log('✅ Evento enviado via window.gtag')
+        return
       } catch (error) {
-        console.error('❌ Error enviando evento de GA4:', error)
-        return false
+        console.error('❌ Error con window.gtag:', error)
       }
     }
 
-    // Enviar el evento
-    const success = sendEvent()
-    
-    if (!success) {
-      console.warn('⚠️ GA4 no está disponible para enviar el evento:', eventName)
+    // Método 2: Usar dataLayer directamente
+    if (window.dataLayer && Array.isArray(window.dataLayer)) {
+      try {
+        window.dataLayer.push({
+          event: eventName,
+          ...eventParams
+        })
+        console.log('✅ Evento enviado via dataLayer')
+        return
+      } catch (error) {
+        console.error('❌ Error con dataLayer:', error)
+      }
     }
+
+    console.warn('⚠️ No se pudo enviar el evento - ni gtag ni dataLayer están disponibles')
   }
 
   return {

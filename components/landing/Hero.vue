@@ -59,15 +59,18 @@ onMounted(() => {
 })
 
 const trackMenuDownload = () => {
-  console.log('🎯 Clic en botón de descarga de menú...') // Debug
-  trackEvent('menu_download', {
-    event_category: 'engagement',
-    event_label: 'Menu PDF',
-    file_name: 'MenúPizzeríaPedestales.pdf',
-    file_extension: 'pdf',
-    link_url: '/documents/MenúPizzeríaPedestales.pdf',
-    value: 1
-  })
+  // Pequeño retraso para asegurar que la página esté completamente cargada
+  setTimeout(() => {
+    console.log('🎯 Clic en botón de descarga de menú...') // Debug
+    trackEvent('menu_download', {
+      event_category: 'engagement',
+      event_label: 'Menu PDF',
+      file_name: 'MenúPizzeríaPedestales.pdf',
+      file_extension: 'pdf',
+      link_url: '/documents/MenúPizzeríaPedestales.pdf',
+      value: 1
+    })
+  }, 100)
 }
 
 

@@ -7,6 +7,8 @@
     </div>
     <MenuPreview />
     <Contact />
+    <!-- Debug component - remove in production -->
+    <GA4Debug />
   </div>
 </template>
 
@@ -15,4 +17,5 @@ import Hero from '@/components/landing/Hero.vue'
 import MenuPreview from '@/components/landing/MenuPreview.vue'
 import Contact from '@/components/landing/Contact.vue'
 import Carrusel from '@/components/landing/Carrusel.vue';
+import GA4Debug from '@/components/debug/GA4Debug.vue'
 </script>

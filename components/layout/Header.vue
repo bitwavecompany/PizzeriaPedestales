@@ -142,14 +142,16 @@ const { trackEvent } = useGtag()
 
 // Función para trackear el evento de pedido via WhatsApp
 const trackWhatsAppOrder = () => {
-  console.log('🎯 Clic en botón pedido WhatsApp...') // Debug
-  trackEvent('whatsapp_order', {
-    event_category: 'engagement',
-    event_label: 'WhatsApp Order Button',
-    link_url: whatsappUrl.value,
-    contact_method: 'whatsapp',
-    value: 1
-  })
+  setTimeout(() => {
+    console.log('🎯 Clic en botón pedido WhatsApp...') // Debug
+    trackEvent('whatsapp_order', {
+      event_category: 'engagement',
+      event_label: 'WhatsApp Order Button',
+      link_url: whatsappUrl.value,
+      contact_method: 'whatsapp',
+      value: 1
+    })
+  }, 100)
 }
 
 // Configuración para WhatsApp

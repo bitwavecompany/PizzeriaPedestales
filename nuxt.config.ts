@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     id: 'G-EFBRLTYSV3', // 👈 tu ID de medición
     config: {
       anonymize_ip: true, // opcional: oculta la IP de los usuarios
-      send_page_view: false // 👈 Deshabilitamos page_view automático para controlar mejor los eventos
+      send_page_view: true // 👈 Habilitamos page_view automático
     }
   },
   app: {
