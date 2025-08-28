@@ -4,6 +4,7 @@
       :href="whatsappUrl"
       target="_blank"
       rel="noopener noreferrer"
+      data-gtm="whatsapp-float"
       class="
         group
         flex
