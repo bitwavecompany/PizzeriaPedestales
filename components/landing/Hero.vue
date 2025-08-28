@@ -58,7 +58,13 @@ onMounted(() => {
   isClient.value = true
 })
 
-const trackMenuDownload = () => {
+const trackMenuDownload = (event: Event) => {
+  // Prevenir que el evento se dispare durante la hidratación o por comportamiento no deseado
+  if (!isClient.value) {
+    event.preventDefault()
+    return
+  }
+  
   console.log('Intentando enviar evento de descarga de menú...') // Debug
   trackEvent('menu_download', {
     event_category: 'engagement',

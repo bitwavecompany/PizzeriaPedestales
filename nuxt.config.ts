@@ -13,7 +13,8 @@ export default defineNuxtConfig({
   gtag: {
     id: 'G-EFBRLTYSV3', // 👈 tu ID de medición
     config: {
-      anonymize_ip: true // opcional: oculta la IP de los usuarios
+      anonymize_ip: true, // opcional: oculta la IP de los usuarios
+      send_page_view: false // 👈 Deshabilitamos page_view automático para controlar mejor los eventos
     }
   },
   app: {
