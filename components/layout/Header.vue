@@ -8,7 +8,7 @@
           <span class="flex items-center gap-2">
             <NuxtImg src="/logo.png" alt="Logo Pizzería Pedestales" class="h-12 w-auto inline-block align-middle" />
             <span>
-              <span class="block text-xl font-extrabold text-red-500 leading-tight">Pizzería Pedestales</span>
+              <span class="block text-xl font-extrabold leading-tight" style="color: #740f2f;">Pizzería Pedestales</span>
             </span>
           </span>
         </div>
@@ -16,19 +16,19 @@
           <ul class="flex gap-8">
             <li>
               <button onclick="location.href='#inicio'" type="button" class="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-red-600 transition-colors px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-200">
-                <Icon icon="line-md:home-twotone" width="20" height="20" class="text-red-500" />
+                <Icon icon="line-md:home-twotone" width="20" height="20" style="color: #740f2f;" />
                 Inicio
               </button>
             </li>
             <li>
               <button onclick="location.href='#menu'" type="button" class="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-red-600 transition-colors px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-200">
-                <Icon icon="ion:pizza" width="20" height="20" class="text-red-500" />
+                <Icon icon="ion:pizza" width="20" height="20" style="color: #740f2f;" />
                 Menú
               </button>
             </li>
             <li>
               <button onclick="location.href='#contacto'" type="button" class="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-red-600 transition-colors px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-200">
-                <Icon icon="healthicons:contact-support" width="20" height="20" class="text-red-500" />
+                <Icon icon="healthicons:contact-support" width="20" height="20" style="color: #740f2f;" />
                 Contacto
               </button>
             </li>
@@ -44,7 +44,7 @@
               :href="whatsappUrl" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="bg-red-500 hover:bg-red-600 text-white font-medium rounded-full px-7 py-2 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 inline-block"
+              class="text-white font-medium rounded-full px-7 py-2 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 inline-block" style="background-color: #740f2f;"
             >
             Hacer Pedido
           </a>
@@ -56,7 +56,7 @@
         <div class="flex items-center justify-between py-3 px-4">
           <div class="flex items-center gap-2 flex-1 min-w-0">
             <NuxtImg src="/logo.png" alt="Logo Pizzería Pedestales" class="h-10 w-auto flex-shrink-0" />
-            <span class="text-lg font-extrabold text-red-500 truncate">Pizzería Pedestales</span>
+            <span class="text-lg font-extrabold truncate" style="color: #740f2f;">Pizzería Pedestales</span>
           </div>
           <button 
             class="p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-200 flex-shrink-0"
@@ -86,7 +86,7 @@
                   onclick="location.href='#inicio'" 
                   @click="isMenuOpen = false"
                 >
-                  <Icon icon="line-md:home-twotone" width="20" height="20" class="text-red-500" />
+                  <Icon icon="line-md:home-twotone" width="20" height="20" style="color: #740f2f;" />
                   Inicio
                 </button>
               </li>
@@ -97,7 +97,7 @@
                   onclick="location.href='#menu'" 
                   @click="isMenuOpen = false"
                 >
-                  <Icon icon="ion:pizza" width="20" height="20" class="text-red-500" />
+                  <Icon icon="ion:pizza" width="20" height="20" style="color: #740f2f;" />
                   Menú
                 </button>
               </li>
@@ -108,7 +108,7 @@
                   onclick="location.href='#contacto'" 
                   @click="isMenuOpen = false"
                 >
-                  <Icon icon="healthicons:contact-support" width="20" height="20" class="text-red-500" />
+                  <Icon icon="healthicons:contact-support" width="20" height="20" style="color: #740f2f;" />
                   Contacto
                 </button>
               </li>
@@ -123,7 +123,7 @@
                 :href="whatsappUrl" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="w-full bg-red-500 hover:bg-red-600 text-white font-medium rounded-full px-6 py-3 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 flex items-center justify-center gap-2"
+                class="w-full text-white font-medium rounded-full px-6 py-3 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 flex items-center justify-center gap-2" style="background-color: #740f2f;"
                 @click="isMenuOpen = false"
               >
                 <Icon icon="logos:whatsapp-icon" width="20" height="20" />

@@ -1,5 +1,9 @@
 {
   "name": "nuxt-app",
+  "version": "1.0.0",
+  "description": "pizzería pedestales",
+  "author": "bitwave",
+  "license": "Proprietary",
   "type": "module",
   "private": true,
   "scripts": {

@@ -2,8 +2,8 @@
 <template>
   <footer id="contacto" class="bg-[#101522] text-gray-200 pb-12 pt-20 px-4 overflow-x-hidden">
     <div class="max-w-4xl mx-auto mb-8 sm:mb-10 text-center">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-200 mb-4">Contáctanos</h2>
-      <p class="text-base sm:text-lg text-gray-400 leading-relaxed">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">Contáctanos</h2>
+      <p class="text-base sm:text-lg text-white leading-relaxed">
         ¿Tienes dudas, sugerencias o quieres hacer un pedido especial? <br class="hidden sm:block">
         ¡Estamos aquí para ayudarte y hacer tu experiencia deliciosa!
       </p>
@@ -60,19 +60,19 @@
           </div>
           <div class="flex flex-col text-sm sm:text-base divide-y divide-gray-100">
             <div class="flex justify-between items-center py-2 sm:py-3">
-              <span class="text-gray-700">Lun - Jue</span>
-              <span class="text-gray-900 font-medium">11:00 - 21:00</span>
+              <span class="text-gray-700">Martes - Jueves</span>
+              <span class="text-gray-900 font-medium">16:00 - 21:00</span>
             </div>
             <div class="flex justify-between items-center py-2 sm:py-3">
-              <span class="text-gray-700">Vie - Sáb</span>
-              <span class="text-gray-900 font-medium">11:00 - 21:00</span>
+              <span class="text-gray-700">Viernes - Sábado</span>
+              <span class="text-gray-900 font-medium">16:00 - 21:00</span>
             </div>
             <div class="flex justify-between items-center py-2 sm:py-3">
               <span class="text-gray-700">Domingo</span>
-              <span class="text-gray-900 font-medium">12:00 - 21:00</span>
+              <span class="text-gray-900 font-medium">16:00 - 21:00</span>
             </div>
           </div>
-          <div class="mt-3 flex flex-col items-center">
+          <!-- <div class="mt-3 flex flex-col items-center">
             <div class="text-xs font-bold text-gray-500 mb-2 text-center">SÍGUENOS EN</div>
             <div class="flex gap-3 sm:gap-4 justify-center">
               <a href="#" aria-label="Facebook" class="bg-blue-600 hover:bg-blue-700 rounded-full p-2 text-xl transition flex items-center justify-center">
@@ -85,7 +85,7 @@
                 <Icon icon="mdi:twitter" class="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

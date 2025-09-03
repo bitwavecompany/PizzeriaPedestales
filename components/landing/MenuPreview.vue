@@ -1,5 +1,5 @@
 <template>
-  <section id="menu" class="pb-12 pt-20 px-4 text-center bg-gradient-to-t from-green-500 to-emerald-800">
+  <section id="menu" class="pb-12 pt-20 px-4 text-center" style="background-color: #183C3A;">
     <div class="max-w-4xl mx-auto mb-8 sm:mb-10">
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">Nuestras Pizzas</h2>
     </div>
@@ -19,7 +19,43 @@
           ]"
           :popular="true"
         />
-                <Card 
+        <Card 
+          title="Pizza Pepperoni" 
+          img="/images/pizzas/peperoni.png" 
+          description="Pepperoni y Queso"
+          :sizes="[
+            { name: 'FAMILIAR', price: 14.00, portions: 12 },
+            { name: 'MEDIANA', price: 10.00, portions: 10 },
+            { name: 'PEQUEÑA', price: 8.00, portions: 8 },
+            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
+          ]"
+          :popular="true"
+        />
+        <Card 
+          title="Pizza Ranchito" 
+          img="/images/pizzas/ranchito.png" 
+          description="Jamón, Salchicha, Pepperoni, Carne molida, Tocino, Salami y Queso"
+          :sizes="[
+            { name: 'FAMILIAR', price: 20.00, portions: 12 },
+            { name: 'MEDIANA', price: 16.00, portions: 10 },
+            { name: 'PEQUEÑA', price: 12.00, portions: 8 },
+            { name: 'INDIVIDUAL', price: 5.50, portions: 6 }
+          ]"
+          :popular="true"
+        />
+        <Card 
+          title="Pizza Tricolor" 
+          img="/images/pizzas/tricolor.png" 
+          description="Jamón, Piña, Pepperoni, Queso"
+          :sizes="[
+            { name: 'FAMILIAR', price: 14.00, portions: 12 },
+            { name: 'MEDIANA', price: 11.00, portions: 10 },
+            { name: 'PEQUEÑA', price: 8.00, portions: 8 },
+            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
+          ]"
+          :popular="false"
+        />
+        <Card 
           title="Pizza Tradicional" 
           img="/images/pizzas/tradicional.png" 
           description="Jamón y Queso"
@@ -30,7 +66,7 @@
             { name: 'INDIVIDUAL', price: 3.00, portions: 6 },
             { name: 'INFANTIL', price: 2.50, portions: 4}
           ]"
-          :popular="true"
+          :popular="false"
         />
         <Card 
           title="Pizza Fungui" 
@@ -39,18 +75,6 @@
           :sizes="[
             { name: 'FAMILIAR', price: 15.00, portions: 12 },
             { name: 'MEDIANA', price: 11.75, portions: 10 },
-            { name: 'PEQUEÑA', price: 8.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Pepperoni" 
-          img="/images/pizzas/peperoni.png" 
-          description="Pepperoni y Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 14.00, portions: 12 },
-            { name: 'MEDIANA', price: 10.00, portions: 10 },
             { name: 'PEQUEÑA', price: 8.00, portions: 8 },
             { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
           ]"
@@ -81,30 +105,6 @@
           :popular="false"
         />
         <Card 
-          title="Pizza Napolitana" 
-          img="/images/pizzas/napolitana.png" 
-          description="Tomate en rodajas, Orégano y Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 10.00, portions: 12 },
-            { name: 'MEDIANA', price: 7.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 5.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 3.00, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Ranchito" 
-          img="/images/pizzas/ranchito.png" 
-          description="Jamón, Salchicha, Pepperoni, Carne molida, Tocino, Salami y Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 20.00, portions: 12 },
-            { name: 'MEDIANA', price: 16.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 12.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.50, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
           title="Pizza Tocichoclo" 
           img="/images/pizzas/tocichoclo.png" 
           description="Tocino, Salami, Choclo y Queso"
@@ -112,18 +112,6 @@
             { name: 'FAMILIAR', price: 15.00, portions: 12 },
             { name: 'MEDIANA', price: 12.00, portions: 10 },
             { name: 'PEQUEÑA', price: 9.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Tricolor" 
-          img="/images/pizzas/tricolor.png" 
-          description="Jamón, Piña, Pepperoni, Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 14.00, portions: 12 },
-            { name: 'MEDIANA', price: 11.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 8.00, portions: 8 },
             { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
           ]"
           :popular="false"
