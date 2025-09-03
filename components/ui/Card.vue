@@ -1,8 +1,8 @@
 
 <template>
-  <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[320px] flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl cursor-pointer mx-auto">
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[320px] flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl cursor-pointer mx-auto" style="background-image: url('/images/backgroundCards.png'); background-size: cover; background-repeat: no-repeat; background-position: center; background-color: #ffffff;">
     <div class="relative">
-      <div class="w-full h-[160px] sm:h-[180px] md:h-[200px] bg-gray-50 flex items-center justify-center p-4">
+  <div class="w-full h-[160px] sm:h-[180px] md:h-[200px] flex items-center justify-center p-4 rounded-lg" style="background-color: rgba(255,255,255,0.65); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.12);">
         <NuxtImg
           v-if="img"
           :src="img"
@@ -13,7 +13,7 @@
         />
         <div v-else class="text-gray-400 text-sm">Sin imagen</div>
       </div>
-      <span v-if="popular" class="absolute top-2 sm:top-3 left-2 sm:left-3 bg-red-500 text-white text-xs font-semibold px-2 sm:px-3 py-1 rounded-full shadow flex items-center gap-1">
+  <span v-if="popular" class="absolute top-2 sm:top-3 left-2 sm:left-3 text-white text-xs font-semibold px-2 sm:px-3 py-1 rounded-full shadow flex items-center gap-1" style="background-color: #740f2f;">
         <Icon icon="material-symbols:favorite-rounded" width="14" height="14" class="sm:w-4 sm:h-4" />
         Favorita
       </span>
@@ -25,7 +25,15 @@
     </div>
     <div class="px-3 sm:px-4 py-3 flex-1 flex flex-col">
       <div class="flex justify-between items-center mb-2">
-    <h3 class="font-bold text-lg sm:text-xl text-gray-800 truncate text-center w-full my-0">{{ title }}</h3>
+        <div class="pizza-title text-center w-full my-0">
+          <template v-if="hasSpace">
+            <span :class="['first-line','inline-block','mr-2',{ 'pizza-small': isFirstWordPizza }]">{{ firstWord }}</span>
+            <span class="second-line inline-block">{{ restWords }}</span>
+          </template>
+          <template v-else>
+            <span :class="['first-line','inline-block',{ 'pizza-small': isFirstWordPizza }]">{{ title }}</span>
+          </template>
+        </div>
       </div>
       <p class="text-gray-500 text-xs sm:text-sm mb-3 leading-relaxed overflow-hidden description-text">{{ description }}</p>
       
@@ -35,7 +43,7 @@
           <div v-for="(size, index) in sizes" :key="index" class="border border-red-200 rounded-lg bg-white p-1.5 sm:p-2 flex flex-col items-center shadow-sm hover:shadow-md transition-shadow min-h-0">
             <span class="text-gray-800 font-semibold text-xs sm:text-sm mb-0.5 leading-tight text-center">{{ size.name }}</span>
             <span class="text-gray-500 text-[10px] sm:text-[11px] mb-1 leading-none text-center">{{ size.portions }} porciones</span>
-            <span class="text-red-600 font-extrabold text-sm sm:text-base leading-none">${{ size.price.toFixed(2) }}</span>
+            <span class="font-extrabold text-sm sm:text-base leading-none" style="color: #740f2f;">${{ size.price.toFixed(2) }}</span>
           </div>
         </div>
       </div>
@@ -50,6 +58,7 @@
 import { NuxtImg } from '#components'
 //import Button from '@/components/ui/Button.vue'
 import { Icon } from '@iconify/vue';
+import { computed } from 'vue';
 
 interface PizzaSize {
   name: string;
@@ -57,7 +66,7 @@ interface PizzaSize {
   portions: number;
 }
 
-defineProps<{
+const props = defineProps<{
   title: string,
   img?: string,
   description: string,
@@ -65,6 +74,25 @@ defineProps<{
   sizes?: PizzaSize[],
   popular?: boolean
 }>()
+
+const hasSpace = computed(() => {
+  return typeof props.title === 'string' && props.title.trim().includes(' ')
+})
+
+const firstWord = computed(() => {
+  if (!props.title) return ''
+  return props.title.trim().split(' ')[0] || props.title
+})
+
+const restWords = computed(() => {
+  if (!props.title) return ''
+  const parts = props.title.trim().split(' ')
+  return parts.slice(1).join(' ')
+})
+
+const isFirstWordPizza = computed(() => {
+  return firstWord.value && firstWord.value.toLowerCase() === 'pizza'
+})
 </script>
 
 <style scoped>
@@ -74,5 +102,44 @@ defineProps<{
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-clamp: 2;
+}
+
+.pizza-title {
+  display: inline-block;
+}
+
+.pizza-title .first-line {
+  font-weight: 800;
+  font-size: 1.75rem; /* aumentado */
+  color: #ffd54a; /* amarillo */
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.18);
+  line-height: 1;
+}
+
+.pizza-title .second-line {
+  font-weight: 800;
+  font-size: 1.5rem; /* aumentado */
+  color: #00a651; /* verde */
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.12);
+  line-height: 1;
+}
+
+@media (min-width: 640px) {
+  .pizza-title .first-line {
+    font-size: 2.25rem;
+  }
+  .pizza-title .second-line {
+    font-size: 1.75rem;
+  }
+}
+
+.pizza-title .pizza-small {
+  font-size: 1.25rem; /* reducido para la palabra 'Pizza' */
+}
+
+@media (min-width: 640px) {
+  .pizza-title .pizza-small {
+    font-size: 1.75rem;
+  }
 }
 </style>
