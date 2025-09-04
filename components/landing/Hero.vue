@@ -3,7 +3,7 @@
   <section
     id="inicio"
     class="relative flex items-center justify-center min-h-[500px] sm:min-h-[600px] h-screen bg-cover bg-center bg-no-repeat overflow-x-hidden"
-    style="background-image: url('/images/banners/tarjeta-presentacion.png'); background-attachment: scroll;"
+    style="background-image: url('/images/banners/tarjeta-presentacion.png'); background-attachment: fixed;"
   >
     <div class="absolute inset-0 bg-black/40 flex items-center justify-center overflow-x-hidden">
       <div class="text-center text-white max-w-4xl w-full px-4 sm:px-6 lg:px-8 z-10">
@@ -31,6 +31,10 @@
         </div>
       </div>
     </div>
+    <NuxtImg 
+      src="/images/banners/tarjeta-presentacion.png" 
+      class="absolute inset-0 w-full h-full object-cover -z-10" 
+    />
   </section>
 </template>
 

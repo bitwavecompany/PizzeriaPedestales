@@ -14,12 +14,12 @@
           :key="idx" 
           class="w-full h-full flex-shrink-0 bg-gray-100"
         >
-          <img 
+          <NuxtImg 
             :src="slide" 
             class="w-full h-full object-contain" 
             :alt="`Banner ${idx + 1}`"
             loading="eager"
-          >
+          />
         </div>
       </div>
       
