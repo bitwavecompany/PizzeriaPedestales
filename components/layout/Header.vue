@@ -1,52 +1,56 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-red-200 shadow-sm">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-pedestales-bg/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+    <!-- Top thin colored line -->
+    <div class="h-1 w-full flex" aria-hidden="true">
+      <div class="h-full bg-yellow-500 w-1/3"/>
+      <div class="h-full bg-pedestales-red w-1/3"/>
+      <div class="h-full bg-green-700 w-1/3"/>
+    </div>
+    
     <div class="max-w-7xl mx-auto overflow-x-hidden">
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center justify-between py-3 px-6">
-        <div class="flex items-center gap-3 flex-shrink-0">
-          <span class="flex items-center gap-2">
-            <NuxtImg src="/logo.png" alt="Logo Pizzería Pedestales" class="h-12 w-auto inline-block align-middle" />
-            <span>
-              <span class="block text-xl font-extrabold leading-tight" style="color: #740f2f;">Pizzería Pedestales</span>
-            </span>
-          </span>
-        </div>
+      <div class="hidden md:flex items-center justify-between py-4 px-6 md:px-12">
+        
+        <!-- Logo con NuxtLink -->
+        <NuxtLink to="#About" class="flex items-center gap-3 flex-shrink-0 group cursor-pointer">
+          <NuxtImg 
+            src="/logo.png" 
+            alt="Logo Pedestales Pizzería"
+            class="w-10 h-10 rounded-full border border-pedestales-red shadow-sm object-cover transition-transform group-hover:scale-105"
+            width="40"
+            height="40"
+          />
+          <div class="flex flex-col">
+            <span class="text-xl font-bold leading-none text-pedestales-dark">Pedestales</span>
+            <span class="text-[9px] text-pedestales-gray tracking-[0.2em] font-medium mt-1 uppercase">Pizzería Artesanal</span>
+          </div>
+        </NuxtLink>
+
+        <!-- Nav Links Desktop -->
         <nav class="flex-1 flex justify-center">
           <ul class="flex gap-8">
-            <li>
-              <button onclick="location.href='#inicio'" type="button" class="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-red-600 transition-colors px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-200">
-                <Icon icon="line-md:home-twotone" width="20" height="20" style="color: #740f2f;" />
-                Inicio
-              </button>
-            </li>
-            <li>
-              <button onclick="location.href='#menu'" type="button" class="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-red-600 transition-colors px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-200">
-                <Icon icon="ion:pizza" width="20" height="20" style="color: #740f2f;" />
-                Menú
-              </button>
-            </li>
-            <li>
-              <button onclick="location.href='#contacto'" type="button" class="flex items-center gap-2 text-base font-medium text-gray-800 hover:text-red-600 transition-colors px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-200">
-                <Icon icon="healthicons:contact-support" width="20" height="20" style="color: #740f2f;" />
-                Contacto
-              </button>
+            <li v-for="link in navLinks" :key="link.href">
+              <NuxtLink 
+                :to="link.href" 
+                class="text-sm font-medium text-pedestales-gray hover:text-pedestales-dark transition-colors"
+              >
+                {{ link.name }}
+              </NuxtLink>
             </li>
           </ul>
         </nav>
+
         <div class="flex-shrink-0">
-            <a 
-              id="pedido_desktop"
-              data-gtm="pedido_desktop"
-              data-element="pedido-desktop"
-              data-action="click"
-              data-category="pedido"
-              :href="whatsappUrl" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="text-white font-medium rounded-full px-7 py-2 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 inline-block" style="background-color: #740f2f;"
-            >
-            Hacer Pedido
+          <a 
+            id="pedido_desktop"
+            :href="whatsappUrl" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="bg-pedestales-red text-white text-xs font-bold px-6 py-3 rounded hover:bg-red-800 transition-colors flex items-center gap-2 tracking-wider shadow-sm"
+          >
+            <Icon icon="mdi:shopping-outline" width="16" />
+            HACER PEDIDO
           </a>
         </div>
       </div>
@@ -54,13 +58,24 @@
       <!-- Mobile Navigation -->
       <div class="md:hidden">
         <div class="flex items-center justify-between py-3 px-4">
-          <div class="flex items-center gap-2 flex-1 min-w-0">
-            <NuxtImg src="/logo.png" alt="Logo Pizzería Pedestales" class="h-10 w-auto flex-shrink-0" />
-            <span class="text-lg font-extrabold truncate" style="color: #740f2f;">Pizzería Pedestales</span>
-          </div>
+          <!-- Logo Móvil -->
+          <NuxtLink to="#About" class="flex items-center gap-3 flex-1 min-w-0" @click="isMenuOpen = false">
+            <NuxtImg 
+              src="/logo.png" 
+              alt="Logo Pedestales"
+              class="w-8 h-8 rounded-full border border-pedestales-red shadow-sm object-cover"
+              width="32"
+              height="32"
+            />
+            <div class="flex flex-col">
+              <span class="text-lg font-bold leading-none text-pedestales-dark">Pedestales</span>
+              <span class="text-[8px] text-pedestales-gray tracking-[0.2em] font-medium mt-1">PIZZERÍA ARTESANAL</span>
+            </div>
+          </NuxtLink>
+
           <button 
-            class="p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-200 flex-shrink-0"
-            aria-label="Toggle menu"
+            class="p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-200"
+            aria-label="Abrir menú"
             @click="isMenuOpen = !isMenuOpen" 
           >
             <Icon 
@@ -72,66 +87,37 @@
           </button>
         </div>
         
-        <!-- Mobile Menu -->
-        <div 
-          v-show="isMenuOpen" 
-          class="border-t border-red-200 bg-white"
-        >
-          <nav class="px-4 py-2">
-            <ul class="space-y-1">
-              <li>
-                <button 
-                  class="w-full flex items-center gap-3 text-base font-medium text-gray-800 hover:text-red-600 hover:bg-red-50 transition-colors px-3 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-200"
-                  type="button"
-                  onclick="location.href='#inicio'" 
+        <!-- Mobile Menu Transition -->
+        <transition name="fade">
+          <div v-show="isMenuOpen" class="border-t border-gray-100 bg-white">
+            <nav class="px-4 py-2">
+              <ul class="space-y-1">
+                <li v-for="link in navLinks" :key="link.href">
+                  <NuxtLink 
+                    :to="link.href"
+                    class="w-full flex items-center gap-3 text-sm font-medium text-pedestales-dark hover:text-pedestales-red hover:bg-gray-50 transition-colors px-3 py-3 rounded-lg"
+                    @click="isMenuOpen = false"
+                  >
+                    {{ link.name }}
+                  </NuxtLink>
+                </li>
+              </ul>
+              <div class="mt-4 pb-4">
+                <a 
+                  id="pedido_movil"
+                  :href="whatsappUrl" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="w-full bg-pedestales-red text-white text-sm font-bold rounded px-6 py-3 transition-colors shadow flex items-center justify-center gap-2"
                   @click="isMenuOpen = false"
                 >
-                  <Icon icon="line-md:home-twotone" width="20" height="20" style="color: #740f2f;" />
-                  Inicio
-                </button>
-              </li>
-              <li>
-                <button 
-                  class="w-full flex items-center gap-3 text-base font-medium text-gray-800 hover:text-red-600 hover:bg-red-50 transition-colors px-3 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-200"
-                  type="button"
-                  onclick="location.href='#menu'" 
-                  @click="isMenuOpen = false"
-                >
-                  <Icon icon="ion:pizza" width="20" height="20" style="color: #740f2f;" />
-                  Menú
-                </button>
-              </li>
-              <li>
-                <button 
-                  class="w-full flex items-center gap-3 text-base font-medium text-gray-800 hover:text-red-600 hover:bg-red-50 transition-colors px-3 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-200"
-                  type="button"
-                  onclick="location.href='#contacto'" 
-                  @click="isMenuOpen = false"
-                >
-                  <Icon icon="healthicons:contact-support" width="20" height="20" style="color: #740f2f;" />
-                  Contacto
-                </button>
-              </li>
-            </ul>
-            <div class="mt-4 pb-2">
-              <a 
-                id="pedido_movil"
-                data-gtm="pedido_movil"
-                data-element="pedido-movil"
-                data-action="click"
-                data-category="pedido"
-                :href="whatsappUrl" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="w-full text-white font-medium rounded-full px-6 py-3 transition-colors shadow text-base focus:outline-none focus:ring-2 focus:ring-red-200 flex items-center justify-center gap-2" style="background-color: #740f2f;"
-                @click="isMenuOpen = false"
-              >
-                <Icon icon="logos:whatsapp-icon" width="20" height="20" />
-                Hacer Pedido
-              </a>
-            </div>
-          </nav>
-        </div>
+                  <Icon icon="mdi:shopping-outline" width="18" />
+                  HACER PEDIDO
+                </a>
+              </div>
+            </nav>
+          </div>
+        </transition>
       </div>
     </div>
   </header>
@@ -139,11 +125,18 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { NuxtImg } from '#components';
-import { Icon } from '@iconify/vue';
+import { Icon } from '@iconify/vue'
 
 // Estado para el menú móvil
 const isMenuOpen = ref(false)
+
+// Configuración de enlaces para evitar repetición
+const navLinks = [
+  { name: 'Menú', href: '#menu' },
+  { name: 'Novedades', href: '#carrusel' },
+  { name: 'Nuestra Casa', href: '#about' },
+  { name: 'Contacto', href: '#contacto' },
+]
 
 // Configuración para WhatsApp
 const phoneNumber = "593993740527"
@@ -154,3 +147,12 @@ const whatsappUrl = computed(() => {
   return `https://wa.me/${phoneNumber}?text=${encodedMessage}`
 })
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+</style>

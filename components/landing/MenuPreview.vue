@@ -1,143 +1,89 @@
 <template>
-  <section id="menu" class="pb-12 pt-20 px-4 text-center" style="background-color: #183C3A;">
-    <div class="max-w-4xl mx-auto mb-8 sm:mb-10">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4">Nuestras Pizzas</h2>
-    </div>
-    <div class="w-full mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-items-center max-w-7xl mx-auto px-2 sm:px-0">
+  <section id="menu" class="pt-10 md:pt-16 pb-0 px-6 md:px-12 bg-pedestales-bg w-full">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div v-motion-slide-visible-bottom class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-8">
+        <div>
+          <div class="flex items-center gap-4 mb-4">
+            <div class="h-px w-8 bg-pedestales-red/50" aria-hidden="true"/>
+          </div>
+          <h2 class="font-serif font-black text-4xl sm:text-5xl lg:text-6xl text-pedestales-dark leading-tight tracking-tight">
+            Nuestro<br>
+            <span class="text-pedestales-red italic font-medium">Menú</span>
+          </h2>
+        </div>
+        <div class="max-w-sm">
+          <p class="text-pedestales-gray text-sm sm:text-base leading-relaxed lg:text-right font-medium">
+            Masa fresca preparada a mano cada mañana y horneada en su punto ideal para lograr el toque crujiente perfecto en cada rebanada.
+          </p>
+        </div>
+      </div>
 
-        <Card 
-          title="Pizza Hawaiana" 
-          img="/images/pizzas/hawaiana.png" 
-          description="Jámon, Piña y Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 13.00, portions: 12 },
-            { name: 'MEDIANA', price: 9.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 7.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 4.50, portions: 6 },
-            { name: 'INFANTIL', price: 2.75, portions: 4 }
-          ]"
-          :popular="true"
-        />
-        <Card 
-          title="Pizza Pepperoni" 
-          img="/images/pizzas/peperoni.png" 
-          description="Pepperoni y Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 14.00, portions: 12 },
-            { name: 'MEDIANA', price: 10.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 8.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
-          ]"
-          :popular="true"
-        />
-        <Card 
-          title="Pizza Ranchito" 
-          img="/images/pizzas/ranchito.png" 
-          description="Jamón, Salchicha, Pepperoni, Carne molida, Tocino, Salami y Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 20.00, portions: 12 },
-            { name: 'MEDIANA', price: 16.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 12.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.50, portions: 6 }
-          ]"
-          :popular="true"
-        />
-        <Card 
-          title="Pizza Tricolor" 
-          img="/images/pizzas/tricolor.png" 
-          description="Jamón, Piña, Pepperoni, Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 14.00, portions: 12 },
-            { name: 'MEDIANA', price: 11.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 8.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Tradicional" 
-          img="/images/pizzas/tradicional.png" 
-          description="Jamón y Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 10.50, portions: 12 },
-            { name: 'MEDIANA', price: 7.50, portions: 10 },
-            { name: 'PEQUEÑA', price: 5.50, portions: 8 },
-            { name: 'INDIVIDUAL', price: 3.00, portions: 6 },
-            { name: 'INFANTIL', price: 2.50, portions: 4}
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Fungui" 
-          img="/images/pizzas/fungui.png" 
-          description="Jamón, Cebolla y Champiñones"
-          :sizes="[
-            { name: 'FAMILIAR', price: 15.00, portions: 12 },
-            { name: 'MEDIANA', price: 11.75, portions: 10 },
-            { name: 'PEQUEÑA', price: 8.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Deli Trópical" 
-          img="/images/pizzas/delitropical.png" 
-          description="Pollo, Jamón y Piña"
-          :sizes="[
-            { name: 'FAMILIAR', price: 15.00, portions: 12 },
-            { name: 'MEDIANA', price: 12.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 8.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.50, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Mixta" 
-          img="/images/pizzas/mixta.png" 
-          description="Jamón, Salchicha, Pimiento, Carne molida, Champiñones, Salami y Cebolla"
-          :sizes="[
-            { name: 'FAMILIAR', price: 18.50, portions: 12 },
-            { name: 'MEDIANA', price: 15.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 10.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.50, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Tocichoclo" 
-          img="/images/pizzas/tocichoclo.png" 
-          description="Tocino, Salami, Choclo y Queso"
-          :sizes="[
-            { name: 'FAMILIAR', price: 15.00, portions: 12 },
-            { name: 'MEDIANA', price: 12.00, portions: 10 },
-            { name: 'PEQUEÑA', price: 9.00, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
-          ]"
-          :popular="false"
-        />
-        <Card 
-          title="Pizza Chicken" 
-          img="/images/pizzas/chicken.png" 
-          description="Pollo, Pimiento y Champiñones"
-          :sizes="[
-            { name: 'FAMILIAR', price: 16.00, portions: 12 },
-            { name: 'MEDIANA', price: 13.50, portions: 10 },
-            { name: 'PEQUEÑA', price: 9.50, portions: 8 },
-            { name: 'INDIVIDUAL', price: 5.00, portions: 6 }
-          ]"
-          :popular="false"
-        />
+      <!-- Filter Row -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-200 pb-6 mb-8 sm:mb-12 gap-4 sm:gap-6">
+        <div class="flex flex-col gap-1">
+          <span class="text-[10px] font-bold tracking-[0.2em] text-pedestales-red uppercase">Precios por tamaño</span>
+          <p class="text-xs text-pedestales-gray uppercase tracking-widest font-bold">Selecciona una opción</p>
+        </div>
 
+        <!-- Desktop Filter (Botones) -->
+        <div class="hidden sm:flex flex-wrap items-center gap-2 sm:gap-3">
+          <button 
+            v-for="size in availableSizes" 
+            :key="size"
+            :class="[
+              'text-[11px] sm:text-xs font-bold tracking-widest transition-all px-5 py-2.5 rounded-full border-2 uppercase',
+              selectedSize === size 
+                ? 'border-pedestales-red bg-pedestales-red text-white shadow-md' 
+                : 'border-gray-100 bg-white text-pedestales-gray hover:border-gray-300 hover:text-pedestales-dark'
+            ]"
+            @click="selectedSize = size"
+          >
+            {{ size }}
+          </button>
+        </div>
+
+        <!-- Mobile Filter (Dropdown Select) -->
+        <div class="sm:hidden w-full relative">
+          <select 
+            v-model="selectedSize"
+            class="w-full appearance-none bg-white border-2 border-gray-200 text-pedestales-dark font-bold text-sm rounded-xl px-4 py-3.5 outline-none focus:border-pedestales-red transition-colors uppercase tracking-widest shadow-sm"
+          >
+            <option v-for="size in availableSizes" :key="size" :value="size">
+              {{ size }}
+            </option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-pedestales-red">
+            <Icon icon="mdi:chevron-down" class="w-6 h-6" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Pizzas Filtradas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-8 lg:gap-y-12 justify-items-center">
+        <!-- Mostrar mensaje si el filtro no arroja resultados (ej: si no hay infantiles) -->
+        <div v-if="filteredPizzas.length === 0" class="col-span-full py-12 text-center text-pedestales-gray">
+          No tenemos pizzas disponibles en este tamaño actualmente.
+        </div>
+
+        <UiCard 
+          v-for="pizza in filteredPizzas"
+          :key="pizza.title"
+          :title="pizza.title"
+          :img="pizza.img"
+          :description="pizza.description"
+          :badges="pizza.badges"
+          :sizes="pizza.sizes"
+          :selected-size="selectedSize"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import Card from '@/components/ui/Card.vue'
+import { Icon } from '@iconify/vue'
+
+const { availableSizes, selectedSize, filteredPizzas } = useMenu()
 </script>
-
-<style scoped>
-
-</style>

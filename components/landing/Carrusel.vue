@@ -1,113 +1,164 @@
-
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <ClientOnly>
-    <div 
-      class="relative w-full overflow-hidden rounded-lg shadow-lg h-[250px] sm:h-[320px] md:h-[400px] lg:h-[480px] xl:h-[560px] mx-auto max-w-7xl"
-    >
-      <!-- Contenedor de slides -->
-      <div
-        class="flex h-full transition-transform duration-700 ease-in-out"
-        :style="`transform: translateX(-${current * 100}%)`"
-      >
-        <div 
-          v-for="(slide, idx) in slides" 
-          :key="idx" 
-          class="w-full h-full flex-shrink-0 bg-gray-100"
-        >
-          <img 
-            :src="slide" 
-            class="w-full h-full object-contain" 
-            :alt="`Banner ${idx + 1}`"
-            loading="eager"
-          >
+  <section id="carrusel" class="pt-8 md:pt-12 pb-0 bg-pedestales-bg w-full overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 mb-8">
+      <!-- Section Header -->
+      <div class="flex flex-col">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="h-px w-8 bg-pedestales-red/50" aria-hidden="true"/>
         </div>
-      </div>
-      
-      <!-- Botones de navegación -->
-      <button 
-        class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-gray-400/80 hover:bg-gray-500/90 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 text-white z-10" 
-        @click="prev"
-      >
-        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button 
-        class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-gray-400/80 hover:bg-gray-500/90 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 text-white z-10" 
-        @click="next"
-      >
-        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-      
-      <!-- Indicadores -->
-      <div class="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-10">
-        <button 
-          v-for="(slide, idx) in slides" 
-          :key="idx" 
-          :class="[
-            'w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300',
-            current === idx
-              ? 'bg-orange-400 scale-125'
-              : 'bg-gray-400/70 hover:bg-gray-500/80 border border-gray-500/40'
-          ]"
-          @click="goTo(idx)"
-        />
+        <h2 class="font-serif font-black text-4xl sm:text-5xl lg:text-6xl text-pedestales-dark leading-tight tracking-tight">
+          Nuestras<br>
+          <span class="text-pedestales-red italic font-medium">Novedades</span>
+        </h2>
       </div>
     </div>
-    <template #fallback>
-      <div class="relative w-full overflow-hidden rounded-lg shadow-lg h-[250px] sm:h-[320px] md:h-[400px] lg:h-[480px] xl:h-[560px] mx-auto max-w-7xl bg-gray-200 flex items-center justify-center">
-        <div class="text-gray-500">Cargando carrusel...</div>
-      </div>
-    </template>
-  </ClientOnly>
+
+    <!-- Contenedor general del carrusel -->
+    <div class="w-full relative group">
+      
+      <!-- Botones Personalizados con Iconify (Diseño Vidrio Minimalista) -->
+      <button class="custom-prev absolute left-[2%] md:left-[4%] top-[calc(50%-1.75rem)] -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-pedestales-muted/50 hover:bg-pedestales-muted/80 backdrop-blur-md rounded-full flex items-center justify-center transition-colors cursor-pointer border-none">
+        <Icon icon="mdi:chevron-left" class="w-8 h-8 md:w-10 md:h-10 text-white" />
+      </button>
+      
+      <button class="custom-next absolute right-[2%] md:right-[4%] top-[calc(50%-1.75rem)] -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-pedestales-muted/50 hover:bg-pedestales-muted/80 backdrop-blur-md rounded-full flex items-center justify-center transition-colors cursor-pointer border-none">
+        <Icon icon="mdi:chevron-right" class="w-8 h-8 md:w-10 md:h-10 text-white" />
+      </button>
+
+      <ClientOnly>
+        <Swiper
+          :modules="[SwiperAutoplay, SwiperNavigation, SwiperPagination]"
+          :slides-per-view="1.1" 
+          :centered-slides="true" 
+          :space-between="20"
+          :loop="true"
+          :speed="800"
+          :autoplay="{
+            delay: 3500,
+            disableOnInteraction: false,
+          }"
+          :navigation="{
+            nextEl: '.custom-next',
+            prevEl: '.custom-prev',
+          }"
+          :pagination="{
+            clickable: true,
+          }"
+          :breakpoints="{
+            '640': { slidesPerView: 1.25, spaceBetween: 30 },
+            '1024': { slidesPerView: 1.45, spaceBetween: 40 },
+          }"
+          class="mi-carrusel" 
+        >
+          <SwiperSlide v-for="(banner, index) in banners" :key="index">
+            <a 
+              :href="banner.link" 
+              class="block relative w-full aspect-[16/9] md:aspect-[21/9] cursor-pointer overflow-hidden rounded-[1rem] sm:rounded-[2rem] shadow-xl isolate transform-gpu bg-transparent"
+            >
+              <!-- Fondo desenfocado -->
+              <NuxtImg 
+                :src="banner.img" 
+                :alt="`Fondo para ${banner.alt}`" 
+                class="absolute inset-0 w-full h-full object-cover scale-125 blur-xl opacity-70"
+                aria-hidden="true"
+                loading="lazy"
+              />
+              
+              <!-- Efecto Vidrio -->
+              <div class="absolute inset-0 bg-white/30 backdrop-blur-md"/>
+
+              <!-- Imagen principal nítida -->
+              <NuxtImg 
+                :src="banner.img" 
+                :alt="banner.alt" 
+                class="absolute inset-0 w-full h-full object-contain p-2 md:p-4 transition-transform duration-500 hover:scale-[1.02]" 
+                loading="lazy"
+              />
+            </a>
+          </SwiperSlide>
+        </Swiper>
+      </ClientOnly>
+    </div>
+  </section>
 </template>
 
-
-
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { Icon } from '@iconify/vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay as SwiperAutoplay, Navigation as SwiperNavigation, Pagination as SwiperPagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
-const slides: string[] = [
-  '/images/banners/combokids.png',
-  '/images/banners/banner-pizzas.png',
-  '/images/banners/tarjeta-presentacion.png'
-];
-
-const current = ref(0);
-let intervalId: ReturnType<typeof setInterval> | null = null;
-
-function next() {
-  current.value = (current.value + 1) % slides.length;
-}
-
-function prev() {
-  current.value = (current.value - 1 + slides.length) % slides.length;
-}
-
-function goTo(idx: number) {
-  current.value = idx;
-}
-
-onMounted(async () => {
-  await nextTick();
-  // Pequeño delay para evitar problemas de hidratación
-  setTimeout(() => {
-    intervalId = setInterval(() => {
-      next();
-    }, 5000); // Cambia cada 5 segundos
-  }, 100);
-});
-
-onBeforeUnmount(() => {
-  if (intervalId) {
-    clearInterval(intervalId);
-    intervalId = null;
+const banners = [
+  {
+    img: '/images/banners/tarjeta-presentacion.png', 
+    alt: 'Nuestras especialidades: Hawaiana, Pepperoni, Ranchito y Mixta',
+    link: '#menu'
+  },
+  {
+    img: '/images/banners/banner-pizzas.png',
+    alt: 'Promoción especial de fin de semana',
+    link: '#contacto' 
+  },
+  {
+    img: '/images/banners/tarjeta-presentacion.png', 
+    alt: 'Nuestras especialidades: Hawaiana, Pepperoni, Ranchito y Mixta',
+    link: '#menu'
+  },
+  {
+    img: '/images/banners/banner-pizzas.png',
+    alt: 'Promoción especial de fin de semana',
+    link: '#contacto' 
   }
-});
+]
 </script>
 
-<style scoped>
-/* Estilos específicos del carrusel se manejan inline para evitar problemas de hidratación */
+<style>
+/* ESPACIO PARA LOS PUNTOS FUERA DE LA IMAGEN */
+.mi-carrusel {
+  width: 100%;
+  padding-bottom: 3.5rem !important; 
+  overflow: visible !important; 
+}
+
+/* POSICIÓN Y ESTÉTICA DE LOS PUNTOS */
+.mi-carrusel .swiper-pagination {
+  bottom: 0 !important; 
+}
+
+.mi-carrusel .swiper-pagination-bullet {
+  background-color: theme('colors.gray.300') !important; 
+  opacity: 1 !important;
+  width: 8px !important;
+  height: 8px !important;
+  transition: all 0.3s ease;
+}
+
+.mi-carrusel .swiper-pagination-bullet-active {
+  background-color: theme('colors.pedestales-red') !important; 
+  width: 24px !important; 
+  border-radius: 4px !important;
+}
+
+/* ESTADO DESHABILITADO PARA LOS BOTONES PERSONALIZADOS */
+.custom-prev.swiper-button-disabled,
+.custom-next.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: auto;
+  pointer-events: none;
+}
+
+/* EFECTO DE FOCO EN LATERALES */
+.swiper-slide {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: scale(0.85);
+  opacity: 0.4;
+}
+
+.swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+}
 </style>

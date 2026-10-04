@@ -1,145 +1,160 @@
-
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="bg-white rounded-2xl shadow-lg overflow-hidden w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[320px] flex flex-col transition-transform duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl cursor-pointer mx-auto" style="background-image: url('/images/backgroundCards.png'); background-size: cover; background-repeat: no-repeat; background-position: center; background-color: #ffffff;">
-    <div class="relative">
-  <div class="w-full h-[160px] sm:h-[180px] md:h-[200px] flex items-center justify-center p-4 rounded-lg" style="background-color: rgba(255,255,255,0.65); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.12);">
-        <NuxtImg
-          v-if="img"
-          :src="img"
-          alt="Pizza"
-          class="max-w-full max-h-full object-contain rounded-lg"
-          format="webp"
-          loading="lazy"
-        />
-        <div v-else class="text-gray-400 text-sm">Sin imagen</div>
-      </div>
-  <span v-if="popular" class="absolute top-2 sm:top-3 left-2 sm:left-3 text-white text-xs font-semibold px-2 sm:px-3 py-1 rounded-full shadow flex items-center gap-1" style="background-color: #740f2f;">
-        <Icon icon="material-symbols:favorite-rounded" width="14" height="14" class="sm:w-4 sm:h-4" />
-        Favorita
-      </span>
-      <span class="absolute top-2 sm:top-3 right-2 sm:right-3 bg-gradient-to-r from-green-200 to-emerald-300 text-gray-700 text-xs px-2 sm:px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-        <Icon icon="ic:round-access-time" class="h-3 w-3 sm:h-4 sm:w-4 inline" />
-        <span class="hidden sm:inline">10-15 min</span>
-        <span class="sm:hidden">10min</span>
-      </span>
+  <div class="group bg-white rounded-[2rem] overflow-hidden w-full flex flex-col transition-all duration-500 hover:-translate-y-2 border border-stone-200/60 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.1)]">
+    
+    <!-- Zona de Badges (Arriba, sin interferir con la imagen) -->
+    <div class="px-5 pt-5 flex flex-wrap gap-2">
+      <transition-group name="fade">
+        <span 
+          v-for="(badge) in badges" 
+          :key="badge.text"
+          :class="[
+            'text-[9px] font-bold px-3 py-1.5 rounded-full shadow-sm tracking-[0.1em] uppercase flex items-center gap-1.5 transition-all',
+            getBadgeClass(badge.type)
+          ]"
+        >
+          <Icon v-if="badge.icon" :icon="badge.icon" class="w-3.5 h-3.5" />
+          {{ badge.text }}
+        </span>
+      </transition-group>
     </div>
-    <div class="px-3 sm:px-4 py-3 flex-1 flex flex-col">
-      <div class="flex justify-between items-center mb-2">
-        <div class="pizza-title text-center w-full my-0">
-          <template v-if="hasSpace">
-            <span :class="['first-line','inline-block','mr-2',{ 'pizza-small': isFirstWordPizza }]">{{ firstWord }}</span>
-            <span class="second-line inline-block">{{ restWords }}</span>
-          </template>
-          <template v-else>
-            <span :class="['first-line','inline-block',{ 'pizza-small': isFirstWordPizza }]">{{ title }}</span>
-          </template>
-        </div>
-      </div>
-      <p class="text-gray-500 text-xs sm:text-sm mb-3 leading-relaxed overflow-hidden description-text">{{ description }}</p>
+
+    <!-- Zona de Imagen (Más grande y centrada) -->
+    <div class="relative w-full h-[220px] sm:h-[240px] flex items-center justify-center p-2 mt-1">
+      <NuxtImg
+        v-if="img"
+        :src="img"
+        :alt="`Pizza ${title}`"
+        class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl"
+        format="webp"
+        loading="lazy"
+      />
+    </div>
+    
+    <!-- Zona de Contenido -->
+    <div class="px-5 pb-6 flex-1 flex flex-col relative">
       
-      <!-- Sección de tamaños en formato de tarjetas -->
-      <div v-if="sizes && sizes.length > 0" class="mb-2">
-        <div class="grid grid-cols-2 gap-1.5 sm:gap-2">
-          <div v-for="(size, index) in sizes" :key="index" class="border border-red-200 rounded-lg bg-white p-1.5 sm:p-2 flex flex-col items-center shadow-sm hover:shadow-md transition-shadow min-h-0">
-            <span class="text-gray-800 font-semibold text-xs sm:text-sm mb-0.5 leading-tight text-center">{{ size.name }}</span>
-            <span class="text-gray-500 text-[10px] sm:text-[11px] mb-1 leading-none text-center">{{ size.portions }} porciones</span>
-            <span class="font-extrabold text-sm sm:text-base leading-none" style="color: #740f2f;">${{ size.price.toFixed(2) }}</span>
+      <!-- Text Info (Tipografía Bicolor) -->
+      <div class="text-center mb-4">
+        <h3 class="font-serif font-black text-2xl sm:text-[1.75rem] mb-1.5 leading-none tracking-tight">
+          <span class="text-yellow-400 drop-shadow-sm">Pizza</span>
+          <span class="text-green-700 ml-1.5">{{ title }}</span>
+        </h3>
+        <p class="text-pedestales-gray text-xs sm:text-[13px] leading-relaxed line-clamp-2">
+          {{ description }}
+        </p>
+      </div>
+
+      <!-- Contenedor de Precios (Anclado al fondo para alinear tarjetas) -->
+      <div class="mt-auto pt-4 w-full">
+        
+        <!-- VISTA 1: Mostrar "TODO" (Lista clásica de menú) -->
+        <ul v-if="selectedSize === 'TODO'" class="flex flex-col w-full border-t border-gray-100 pt-2">
+          <li 
+            v-for="size in sizes" 
+            :key="size.name"
+            class="flex items-end justify-between py-1.5 border-b border-dashed border-gray-200 last:border-transparent group/item"
+          >
+            <div class="flex items-baseline gap-2">
+              <span class="text-[11px] font-bold text-pedestales-dark uppercase tracking-wider">
+                {{ size.name }}
+              </span>
+              <span class="text-[10px] text-pedestales-gray/70">
+                {{ size.portions }} porciones
+              </span>
+            </div>
+            <div class="flex items-start text-pedestales-red font-black">
+              <span class="text-[10px] mt-[1.5px] mr-[1px] font-bold">$</span>
+              <span class="text-[15px] tracking-tight leading-none">
+                {{ formatPrice(size.price) }}
+              </span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- VISTA 2: Mostrar TAMAÑO ESPECÍFICO filtrado -->
+        <div v-else-if="currentSizeInfo" class="pt-3 w-full border-t border-gray-100 flex justify-between items-end pb-1 px-1">
+          <div class="flex flex-col items-start gap-1">
+            <span class="text-[13px] font-bold text-pedestales-dark uppercase tracking-wide leading-none">
+              {{ currentSizeInfo.name }}
+            </span>
+            <span class="text-[11px] text-pedestales-gray font-medium leading-none">
+              {{ currentSizeInfo.portions }} porciones
+            </span>
+          </div>
+          <div class="flex items-start text-pedestales-red font-black relative top-[2px]">
+            <span class="text-[11px] mt-[3px] mr-[1px] font-bold">$</span>
+            <span class="text-2xl tracking-tight leading-none">
+              {{ formatPrice(currentSizeInfo.price) }}
+            </span>
           </div>
         </div>
+
       </div>
-      
-      <!-- Fallback para el formato anterior -->
-      <p v-else-if="portions" class="text-green-700 text-xs font-semibold mb-5">Porciones: {{ portions }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { NuxtImg } from '#components'
-//import Button from '@/components/ui/Button.vue'
-import { Icon } from '@iconify/vue';
-import { computed } from 'vue';
+import { computed } from 'vue'
+import { Icon } from '@iconify/vue'
 
 interface PizzaSize {
-  name: string;
-  price: number;
-  portions: number;
+  name: string
+  price: number
+  portions: number
+}
+
+interface Badge {
+  text: string
+  type: 'green' | 'red' | 'gold' | 'outline' | string
+  icon?: string
 }
 
 const props = defineProps<{
-  title: string,
-  img?: string,
-  description: string,
-  portions?: string,
-  sizes?: PizzaSize[],
-  popular?: boolean
+  title: string
+  img?: string
+  description: string
+  sizes?: PizzaSize[]
+  selectedSize?: string
+  badges?: Badge[]
 }>()
 
-const hasSpace = computed(() => {
-  return typeof props.title === 'string' && props.title.trim().includes(' ')
+// Lógica de precio/porciones
+const currentSizeInfo = computed(() => {
+  if (!props.sizes || props.sizes.length === 0) return null
+  
+  const selected = props.selectedSize
+  if (selected && selected !== 'TODO') {
+    return props.sizes.find(s => s.name.toUpperCase() === selected.toUpperCase()) || null
+  }
+  return null
 })
 
-const firstWord = computed(() => {
-  if (!props.title) return ''
-  return props.title.trim().split(' ')[0] || props.title
-})
+const formatPrice = (price: number) => {
+  return price.toFixed(2)
+}
 
-const restWords = computed(() => {
-  if (!props.title) return ''
-  const parts = props.title.trim().split(' ')
-  return parts.slice(1).join(' ')
-})
-
-const isFirstWordPizza = computed(() => {
-  return firstWord.value && firstWord.value.toLowerCase() === 'pizza'
-})
+const getBadgeClass = (type: string) => {
+  const styles: Record<string, string> = {
+    green: 'bg-green-700 text-white border border-green-800',
+    red: 'bg-pedestales-red text-white border border-red-900/50',
+    gold: 'bg-yellow-500 text-pedestales-dark border border-yellow-600',
+    outline: 'bg-white/95 backdrop-blur-sm text-pedestales-dark border border-gray-200'
+  }
+  return styles[type] || 'bg-pedestales-dark text-white'
+}
 </script>
 
 <style scoped>
-/* Truncar texto para descripción */
-.description-text {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-clamp: 2;
+.fade-move,
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
 }
-
-.pizza-title {
-  display: inline-block;
-}
-
-.pizza-title .first-line {
-  font-weight: 800;
-  font-size: 1.75rem; /* aumentado */
-  color: #ffd54a; /* amarillo */
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.18);
-  line-height: 1;
-}
-
-.pizza-title .second-line {
-  font-weight: 800;
-  font-size: 1.5rem; /* aumentado */
-  color: #00a651; /* verde */
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.12);
-  line-height: 1;
-}
-
-@media (min-width: 640px) {
-  .pizza-title .first-line {
-    font-size: 2.25rem;
-  }
-  .pizza-title .second-line {
-    font-size: 1.75rem;
-  }
-}
-
-.pizza-title .pizza-small {
-  font-size: 1.25rem; /* reducido para la palabra 'Pizza' */
-}
-
-@media (min-width: 640px) {
-  .pizza-title .pizza-small {
-    font-size: 1.75rem;
-  }
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(-10px);
 }
 </style>

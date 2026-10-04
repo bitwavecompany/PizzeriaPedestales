@@ -6,8 +6,9 @@ html, body {
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fafafa;
+  font-family: 'Inter', sans-serif;
+  background: theme('colors.pedestales-bg');
+  color: theme('colors.pedestales-dark');
 }
 
 h1, h2, h3 {
