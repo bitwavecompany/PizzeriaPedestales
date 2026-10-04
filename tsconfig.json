@@ -8,7 +8,7 @@
     { "path": "./.nuxt/tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
+    "skipLibCheck": true,
     "paths": {
       "@/*": ["./*"],
       "~/*": ["./*"]

@@ -26,10 +26,11 @@
         duration-300
         transform
         hover:scale-110
-        animate-pulse
+        animate-pulse-scale
         hover:animate-none
       "
       :title="tooltipText"
+      @click="useTrackEvent('whatsapp_click')"
     >
       <!-- Icono de WhatsApp -->
       <svg
@@ -101,19 +102,3 @@ const whatsappUrl = computed(() => {
   return `https://wa.me/${props.phoneNumber}?text=${encodedMessage}`
 })
 </script>
-
-<style scoped>
-/* Animación personalizada para el pulso */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-</style>
