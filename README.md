@@ -12,9 +12,9 @@ Interactive frontend website and digital catalog for **Pizzería Pedestales**. B
 
 *   **Interactive Catalog:** Dynamic pizza filtering and rendering without page reloads.
 *   **Advanced Technical SEO:** Integration of `@nuxtjs/seo`, native JSON-LD structured data in `app.vue`, dynamic sitemaps, and auto-generated robots.txt.
-*   **Integrated Analytics:** Event tracking (e.g., WhatsApp button clicks) using `nuxt-gtag`.
-*   **Accessibility & Performance:** Fully compliant with WCAG AA contrast, semantic ARIA labels, responsive image sizing (`<NuxtImg>`), and PWA baseline metadata (manifest, theme colors).
-*   **Smooth Animations:** Scroll-reveal effects powered by `@vueuse/motion`.
+*   **Integrated Analytics:** Comprehensive GA4 event tracking for catalog filters, promotional banners, social media, and contact buttons using `nuxt-gtag`.
+*   **Accessibility & Performance:** Fully compliant with WCAG AA contrast, semantic ARIA labels, responsive image sizing (`<NuxtImg>` with `sharp`), and PWA baseline metadata. Zero-JS initial LCP rendering.
+*   **Smooth Animations:** Hardware-accelerated native CSS animations (`will-change-transform`, keyframes) for optimal mobile performance without heavy JS libraries.
 *   **Strict Typing:** 100% TypeScript architecture.
 
 ## 🛠️ Tech Stack

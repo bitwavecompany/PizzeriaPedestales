@@ -48,14 +48,14 @@ npm run typecheck  # Runs strict TS validation via vue-tsc.
 | `@iconify/vue`           | `^5.0.0`          |
 | `@nuxt/image`            | `^1.11.0`         |
 | `swiper`                 | `^14.2.0`         |
-| `@vueuse/motion`         | `^3.0.3`          |
 | `nuxt-gtag`              | `^4.0.0`          |
+| `sharp`                  | `^0.33.5`         |
 
 **Architecture Details:**
 - **Vue 3 Composition API**: Strict use of `<script setup lang="ts">`.
 - **TypeScript**: 100% Coverage. All configs (`tailwind.config.ts`, `nuxt.config.ts`, scripts) MUST be `.ts`.
 - **Styling**: Tailwind CSS via `@nuxtjs/tailwindcss` with custom brand colors. Ensure WCAG AA contrast ratios (4.5:1).
-- **Animations**: Uses `@vueuse/motion` (e.g. `v-motion-slide-visible-bottom`). Do NOT install other heavy animation libraries unless requested.
+- **Animations**: Uses hardware-accelerated CSS animations (configured in `tailwind.config.ts`) for maximum performance and instant LCP. Do NOT install heavy JS animation libraries (like `@vueuse/motion` or `framer-motion`) unless explicitly requested, as they block mobile rendering.
 - **Analytics**: Handled via `nuxt-gtag`. Custom events use `useTrackEvent('event_name')`.
 - **Images**: `@nuxt/image` (`<NuxtImg>`) auto-converts heavy `public/` PNGs to WebP formats. Always use the `sizes` attribute for responsive sizing and optimal LCP.
 - **Accessibility**: All interactive elements (buttons, links, inputs) must have discernible text or `aria-label` attributes to maintain a 100 Lighthouse Accessibility score.

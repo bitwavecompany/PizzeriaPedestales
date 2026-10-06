@@ -38,7 +38,7 @@
                 ? 'border-pedestales-red bg-pedestales-red text-white shadow-md' 
                 : 'border-gray-100 bg-white text-pedestales-gray hover:border-gray-300 hover:text-pedestales-dark'
             ]"
-            @click="selectedSize = size"
+            @click="handleSizeFilterClick(size)"
           >
             {{ size }}
           </button>
@@ -49,6 +49,7 @@
           <select 
             aria-label="Filtrar por tamaño de pizza"
             v-model="selectedSize"
+            @change="handleSizeFilterChange"
             class="w-full appearance-none bg-white border-2 border-gray-200 text-pedestales-dark font-bold text-sm rounded-xl px-4 py-3.5 outline-none focus:border-pedestales-red transition-colors uppercase tracking-widest shadow-sm"
           >
             <option v-for="size in availableSizes" :key="size" :value="size">
@@ -87,4 +88,16 @@
 import { Icon } from '@iconify/vue'
 
 const { availableSizes, selectedSize, filteredPizzas } = useMenu()
+
+// Track desktop size filter interactions
+const handleSizeFilterClick = (size: string) => {
+  selectedSize.value = size
+  useTrackEvent('filter_catalog_size', { size_selected: size })
+}
+
+// Track mobile select dropdown changes
+const handleSizeFilterChange = (event: Event) => {
+  const selectElement = event.target as HTMLSelectElement
+  useTrackEvent('filter_catalog_size', { size_selected: selectElement.value })
+}
 </script>

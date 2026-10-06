@@ -23,13 +23,13 @@
 
       <!-- Social Links (Opcional pero recomendado) -->
       <div class="flex items-center gap-6">
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-pedestales-gray hover:text-pedestales-red transition-colors" aria-label="Instagram">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-pedestales-gray hover:text-pedestales-red transition-colors" aria-label="Instagram" @click="useTrackEvent('click_social_media', { network: 'Instagram' })">
           <Icon icon="mdi:instagram" width="22" />
         </a>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="text-pedestales-gray hover:text-pedestales-red transition-colors" aria-label="Facebook">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="text-pedestales-gray hover:text-pedestales-red transition-colors" aria-label="Facebook" @click="useTrackEvent('click_social_media', { network: 'Facebook' })">
           <Icon icon="mdi:facebook" width="22" />
         </a>
-        <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer" class="text-pedestales-gray hover:text-pedestales-red transition-colors" aria-label="WhatsApp">
+        <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer" class="text-pedestales-gray hover:text-pedestales-red transition-colors" aria-label="WhatsApp" @click="useTrackEvent('click_social_media', { network: 'WhatsApp' })">
           <Icon icon="mdi:whatsapp" width="22" />
         </a>
       </div>

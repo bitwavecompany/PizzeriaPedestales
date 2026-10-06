@@ -19,7 +19,7 @@ const schemaData = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "Pizzería Pedestales",
-  "image": "https://pizzeriapedestales.com/logo.webp",
+  "image": "https://pizzeriapedestales.vercel.app/logo.webp",
   "description": "Masa lenta, fuego alto y buenos ingredientes. Una experiencia sencilla, hecha para repetirse.",
   "servesCuisine": "Pizza",
   "priceRange": "$$",

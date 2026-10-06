@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   
   site: {
-    url: 'https://pizzeriapedestales.com',
+    url: 'https://pizzeriapedestales.vercel.app',
     name: 'Pizzería Pedestales',
     defaultLocale: 'es'
   },
@@ -24,13 +24,14 @@ export default defineNuxtConfig({
       'Inter': [300, 400, 500, 600, 700],
     },
     display: 'swap',
+    download: true,
   },
 
   gtag: {
-    id: 'G-EFBRLTYSV3', // 👈 tu ID de medición
+    id: 'G-GCFFZ444JN', // 👈 ID de medición real
     config: {
-      anonymize_ip: true, // opcional: oculta la IP de los usuarios
-      send_page_view: true // 👈 Habilitamos page_view automático
+      anonymize_ip: true, 
+      send_page_view: true 
     }
   },
 

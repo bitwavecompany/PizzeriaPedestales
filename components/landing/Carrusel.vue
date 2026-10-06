@@ -55,6 +55,7 @@
             <a 
               :href="banner.link" 
               class="block relative w-full aspect-[16/9] md:aspect-[21/9] cursor-pointer overflow-hidden rounded-[1rem] sm:rounded-[2rem] shadow-xl isolate transform-gpu bg-transparent"
+              @click="handlePromotionClick(banner.alt)"
             >
               <!-- Fondo desenfocado -->
               <NuxtImg 
@@ -113,6 +114,11 @@ const banners = [
     link: '#contacto' 
   }
 ]
+
+// Track clicks on promotional banners to measure engagement
+const handlePromotionClick = (promotionName: string) => {
+  useTrackEvent('click_promotion_banner', { promotion_name: promotionName })
+}
 </script>
 
 <style>

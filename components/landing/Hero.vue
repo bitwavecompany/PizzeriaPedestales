@@ -52,7 +52,7 @@
       </div>
 
       <!-- Right Images -->
-      <div class="relative order-1 lg:order-2 flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[600px] animate-[fade-in_1s_ease-out]">
+      <div class="relative order-1 lg:order-2 flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[600px]">
         
         <!-- Main Circular Image (Tarjeta) -->
         <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[460px] lg:h-[460px] rounded-full overflow-hidden shadow-2xl z-10 border-[6px] lg:border-[12px] border-white animate-float will-change-transform">

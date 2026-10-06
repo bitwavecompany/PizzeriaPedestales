@@ -30,7 +30,13 @@
                 {{ item.label }}
               </span>
               <template v-if="item.link">
-                <a :href="item.link" target="_blank" rel="noopener noreferrer" class="font-sans font-bold text-pedestales-dark text-xl sm:text-2xl hover:text-pedestales-red transition-colors">
+                <a 
+                  :href="item.link" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="font-sans font-bold text-pedestales-dark text-xl sm:text-2xl hover:text-pedestales-red transition-colors"
+                  @click="handleContactClick(item.label)"
+                >
                   {{ item.value }}
                 </a>
               </template>
@@ -74,5 +80,8 @@ const contactDetails = [
   }
 ]
 
-
+// Track outbound clicks to external contact methods (Phone / Maps)
+const handleContactClick = (contactMethod: string) => {
+  useTrackEvent('click_contact_method', { method: contactMethod })
+}
 </script>
