@@ -10,7 +10,7 @@
     <div class="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       
       <!-- Left Content -->
-      <div v-motion-slide-visible-bottom :delay="100" class="z-10 relative order-2 lg:order-1 text-center lg:text-left">
+      <div class="z-10 relative order-2 lg:order-1 text-center lg:text-left animate-[fade-in-up_0.8s_ease-out]">
         <header class="flex items-center justify-center lg:justify-start gap-4 mb-6">
           <div class="h-px w-8 bg-pedestales-red/50" aria-hidden="true"/>
         </header>
@@ -52,16 +52,16 @@
       </div>
 
       <!-- Right Images -->
-      <div v-motion-slide-visible-right :delay="300" class="relative order-1 lg:order-2 flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[600px]">
+      <div class="relative order-1 lg:order-2 flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[600px] animate-[fade-in_1s_ease-out]">
         
         <!-- Main Circular Image (Tarjeta) -->
-        <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[460px] lg:h-[460px] rounded-full overflow-hidden shadow-2xl z-10 border-[6px] lg:border-[12px] border-white animate-float">
+        <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[460px] lg:h-[460px] rounded-full overflow-hidden shadow-2xl z-10 border-[6px] lg:border-[12px] border-white animate-float will-change-transform">
           <NuxtImg 
             src="/images/pizzas/peperoni.png" 
             alt="Pizza artesanal recién salida del horno" 
             class="w-full h-full object-cover object-center scale-110"
-            width="460"
-            height="460"
+            sizes="xs:256px sm:320px lg:460px"
+            format="webp"
             loading="eager"
             fetchpriority="high"
           />

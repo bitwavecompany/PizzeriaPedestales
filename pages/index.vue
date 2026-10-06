@@ -2,7 +2,7 @@
   <div class="overflow-x-hidden max-w-full">
     <LandingHero />
     <LandingMenuPreview />
-    <LandingCarrusel />
+    <LazyLandingCarrusel />
     <LandingAbout />
     <LandingContact />
   </div>
