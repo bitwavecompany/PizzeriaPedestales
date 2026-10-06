@@ -5,6 +5,7 @@
       :href="whatsappUrl"
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Hacer pedido por WhatsApp"
       data-gtm="whatsapp-float"
       data-element="whatsapp-button"
       data-action="click"

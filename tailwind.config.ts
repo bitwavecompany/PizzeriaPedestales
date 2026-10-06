@@ -13,7 +13,7 @@ export default <Config>{
         'pedestales-red': '#cc4629', // Adjusted from image
         'pedestales-bg': '#faf8f4', // Cream background
         'pedestales-dark': '#1c1c1c',
-        'pedestales-gray': '#737373',
+        'pedestales-gray': '#6b6b6b',
         'pedestales-muted': '#9e968f',
       },
       fontFamily: {

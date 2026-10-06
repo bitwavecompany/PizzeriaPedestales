@@ -80,7 +80,7 @@
 
         <!-- Badge (Flotante) -->
         <div class="absolute -left-4 top-10 lg:left-0 lg:top-20 bg-white w-24 h-24 sm:w-32 sm:h-32 rounded-full flex flex-col justify-center items-center border-2 border-yellow-500 shadow-xl rotate-[-12deg] z-30 animate-pulse-slow">
-          <span class="text-[8px] sm:text-[10px] text-yellow-600 font-bold uppercase tracking-[0.2em]">Sabor</span>
+          <span class="text-[10px] sm:text-xs text-yellow-700 font-bold uppercase tracking-[0.2em]">Sabor</span>
           <span class="font-serif italic text-pedestales-dark text-lg sm:text-2xl my-[-2px] sm:my-[-4px]">CASERO</span>
         </div>
 

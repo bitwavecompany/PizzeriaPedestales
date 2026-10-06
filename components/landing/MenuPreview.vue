@@ -47,6 +47,7 @@
         <!-- Mobile Filter (Dropdown Select) -->
         <div class="sm:hidden w-full relative">
           <select 
+            aria-label="Filtrar por tamaño de pizza"
             v-model="selectedSize"
             class="w-full appearance-none bg-white border-2 border-gray-200 text-pedestales-dark font-bold text-sm rounded-xl px-4 py-3.5 outline-none focus:border-pedestales-red transition-colors uppercase tracking-widest shadow-sm"
           >

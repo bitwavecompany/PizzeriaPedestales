@@ -18,11 +18,11 @@
     <div class="w-full relative group">
       
       <!-- Botones Personalizados con Iconify (Diseño Vidrio Minimalista) -->
-      <button class="custom-prev absolute left-[2%] md:left-[4%] top-[calc(50%-1.75rem)] -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-pedestales-muted/50 hover:bg-pedestales-muted/80 backdrop-blur-md rounded-full flex items-center justify-center transition-colors cursor-pointer border-none">
+      <button aria-label="Ver novedad anterior" class="custom-prev absolute left-[2%] md:left-[4%] top-[calc(50%-1.75rem)] -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-pedestales-muted/50 hover:bg-pedestales-muted/80 backdrop-blur-md rounded-full flex items-center justify-center transition-colors cursor-pointer border-none">
         <Icon icon="mdi:chevron-left" class="w-8 h-8 md:w-10 md:h-10 text-white" />
       </button>
       
-      <button class="custom-next absolute right-[2%] md:right-[4%] top-[calc(50%-1.75rem)] -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-pedestales-muted/50 hover:bg-pedestales-muted/80 backdrop-blur-md rounded-full flex items-center justify-center transition-colors cursor-pointer border-none">
+      <button aria-label="Ver novedad siguiente" class="custom-next absolute right-[2%] md:right-[4%] top-[calc(50%-1.75rem)] -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-pedestales-muted/50 hover:bg-pedestales-muted/80 backdrop-blur-md rounded-full flex items-center justify-center transition-colors cursor-pointer border-none">
         <Icon icon="mdi:chevron-right" class="w-8 h-8 md:w-10 md:h-10 text-white" />
       </button>
 

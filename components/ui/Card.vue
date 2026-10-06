@@ -9,7 +9,7 @@
           v-for="(badge) in badges" 
           :key="badge.text"
           :class="[
-            'text-[9px] font-bold px-3 py-1.5 rounded-full shadow-sm tracking-[0.1em] uppercase flex items-center gap-1.5 transition-all',
+            'text-[11px] sm:text-xs font-bold px-3 py-1.5 rounded-full shadow-sm tracking-[0.1em] uppercase flex items-center gap-1.5 transition-all',
             getBadgeClass(badge.type)
           ]"
         >
@@ -25,6 +25,7 @@
         v-if="img"
         :src="img"
         :alt="`Pizza ${title}`"
+        sizes="xs:100vw sm:50vw lg:33vw xl:25vw"
         class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-xl"
         format="webp"
         loading="lazy"
@@ -56,16 +57,16 @@
             class="flex items-end justify-between py-1.5 border-b border-dashed border-gray-200 last:border-transparent group/item"
           >
             <div class="flex items-baseline gap-2">
-              <span class="text-[11px] font-bold text-pedestales-dark uppercase tracking-wider">
+              <span class="text-xs font-bold text-pedestales-dark uppercase tracking-wider">
                 {{ size.name }}
               </span>
-              <span class="text-[10px] text-pedestales-gray/70">
+              <span class="text-[11px] text-pedestales-gray/70">
                 {{ size.portions }} porciones
               </span>
             </div>
             <div class="flex items-start text-pedestales-red font-black">
-              <span class="text-[10px] mt-[1.5px] mr-[1px] font-bold">$</span>
-              <span class="text-[15px] tracking-tight leading-none">
+              <span class="text-[11px] mt-[1.5px] mr-[1px] font-bold">$</span>
+              <span class="text-base tracking-tight leading-none">
                 {{ formatPrice(size.price) }}
               </span>
             </div>

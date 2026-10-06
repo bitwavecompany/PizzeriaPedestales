@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   
   site: {
     url: 'https://pizzeriapedestales.com',
-    name: 'Pizzería Pedestales'
+    name: 'Pizzería Pedestales',
+    defaultLocale: 'es'
   },
 
   modules: [
@@ -36,6 +37,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'es'
+      },
       title: 'Pizzería Pedestales',
       meta: [
         {
@@ -46,9 +50,14 @@ export default defineNuxtConfig({
           'http-equiv': 'Permissions-Policy',
           content:
             'accelerometer=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()'
-        }
+        },
+        { name: 'theme-color', content: '#faf8f4' }
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/logo.ico' }]
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/logo.ico' },
+        { rel: 'apple-touch-icon', href: '/logo.png' },
+        { rel: 'manifest', href: '/manifest.json' }
+      ]
     }
   },
 

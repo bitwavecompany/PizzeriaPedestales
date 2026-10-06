@@ -30,7 +30,7 @@
                 {{ item.label }}
               </span>
               <template v-if="item.link">
-                <a :href="item.link" target="_blank" class="font-sans font-bold text-pedestales-dark text-xl sm:text-2xl hover:text-pedestales-red transition-colors">
+                <a :href="item.link" target="_blank" rel="noopener noreferrer" class="font-sans font-bold text-pedestales-dark text-xl sm:text-2xl hover:text-pedestales-red transition-colors">
                   {{ item.value }}
                 </a>
               </template>
