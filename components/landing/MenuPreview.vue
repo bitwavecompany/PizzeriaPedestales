@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header -->
-      <div v-motion-slide-visible-bottom class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-8">
         <div>
           <div class="flex items-center gap-4 mb-4">
             <div class="h-px w-8 bg-pedestales-red/50" aria-hidden="true"/>

@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-gtag',
     '@nuxtjs/google-fonts',
-    '@vueuse/motion/nuxt',
     '@nuxtjs/seo'
   ],
 
@@ -25,8 +24,6 @@ export default defineNuxtConfig({
       'Inter': [300, 400, 500, 600, 700],
     },
     display: 'swap',
-    download: true,
-    inject: true
   },
 
   gtag: {
